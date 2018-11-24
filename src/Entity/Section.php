@@ -132,10 +132,15 @@ class Section implements \JsonSerializable
     public function jsonSerialize()
     {
         return [
+            'id' => $this->getId(),
             'name' => $this->getName(),
             'startPoint' => [
                 'latitude' => $this->getStartPoint()->getLatitude(),
                 'longitude' => $this->getStartPoint()->getLongitude(),
+            ],
+            'endPoint' => [
+                'latitude' => $this->getEndPoint()->getLatitude(),
+                'longitude' => $this->getEndPoint()->getLongitude(),
             ]
         ];
     }
