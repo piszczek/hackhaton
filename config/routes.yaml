@@ -5,3 +5,7 @@
 app_dashboard_index:
   path: /
   controller: App\Controller\DashboardController::index
+
+app_dashboard_map:
+  path: /map
+  controller: App\Controller\DashboardController::map
