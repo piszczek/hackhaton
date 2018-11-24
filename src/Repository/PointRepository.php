@@ -47,4 +47,15 @@ class PointRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findByCords(float $lat, float $lng)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.latitude = :lat')
+            ->setParameter('lat', $lat)
+            ->andWhere('p.longitude = :lng')
+            ->setParameter('lng', $lng)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }
