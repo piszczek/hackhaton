@@ -14,35 +14,39 @@ class SectionFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
+        $points = [];
         $sections = $this->getSections();
 
-        foreach ($sections as $section) {
+        foreach ($sections as $sect) {
 
 
-            $startPoint = $manager->getRepository(Point::class)->findByCords($section['startPoint'][0], $section['startPoint'][1]);
-            if (!$startPoint) {
+            if (!in_array($sect['startPoint'][0], $points)) {
                 $startPoint = new Point();
-                $startPoint->setLatitude($section['startPoint'][0]);
-                $startPoint->setLongitude($section['startPoint'][1]);
+                $startPoint->setLatitude($sect['startPoint'][0]);
+                $startPoint->setLongitude($sect['startPoint'][1]);
+
+                $points[] = $sect['startPoint'][0];
             }
 
-            $endPoint = $manager->getRepository(Point::class)->findByCords($section['endPoint'][0], $section['endPoint'][1]);
-            if (!$endPoint) {
+            if (!in_array($sect['endPoint'][0], $points)) {
                 $endPoint = new Point();
-                $endPoint->setLongitude($section['endPoint'][0]);
-                $endPoint->setLatitude($section['endPoint'][1]);
+                $endPoint->setLongitude($sect['endPoint'][0]);
+                $endPoint->setLatitude($sect['endPoint'][1]);
+
+                $points[] = $sect['endPoint'][0];
             }
+
 
 
             $section = new Section();
-            $section->setName(rand(0,1000));
+            $section->setName(rand(0,10000));
 
             $section->setStartPoint($startPoint);
             $section->setEndPoint($endPoint);
-            $section->setDistance($this->calcDistance($section['startPoint'][0], $section['startPoint'][1], $section['endPoint'][0], $section['endPoint'][1]));
+            $section->setDistance($this->calcDistance($sect['startPoint'][0], $sect['startPoint'][1], $sect['endPoint'][0], $sect['endPoint'][1]));
 
-            $hightRestrction = new Restriction(RestrictionType::TYPE_HEIGHT);
-            $hightRestrction->setValueTo("999");
+            $heightRestrction = new Restriction(RestrictionType::TYPE_HEIGHT);
+            $heightRestrction->setValueTo("999");
             $widthRestriction = new Restriction(RestrictionType::TYPE_WIDTH);
             $widthRestriction->setValueTo("999");
             $weightRestriction = new Restriction(RestrictionType::TYPE_WEIGHT);
@@ -52,7 +56,7 @@ class SectionFixtures extends Fixture
             $activeRestriction = new Restriction(RestrictionType::TYPE_WEIGHT);
             $activeRestriction->setValueTo("1");
 
-            $section->addRestriction($hightRestrction);
+            $section->addRestriction($heightRestrction);
             $section->addRestriction($widthRestriction);
             $section->addRestriction($weightRestriction);
             $section->addRestriction($activeRestriction);
