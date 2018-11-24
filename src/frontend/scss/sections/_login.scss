@@ -1,0 +1,17 @@
+.login {
+  height: 100vh;
+  .wrapper {
+    width: 330px;
+    margin: 100px auto;
+  }
+  &__logo {
+    text-align: center;
+    img {
+      max-width: 200px;
+      display: inline-block;
+    }
+  }
+  &__form {
+
+  }
+}

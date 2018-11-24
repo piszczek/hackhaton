@@ -35,3 +35,5 @@
 /web/js/
 
 .idea/
+
+/src/gulp/node_modules
