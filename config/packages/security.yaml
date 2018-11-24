@@ -1,0 +1,30 @@
+security:
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+    main:
+      anonymous: ~
+      logout:
+        path:   logout
+      guard:
+          authenticators:
+              - App\Security\LoginFormAuthenticator
+
+  encoders:
+    # use your user class name here
+    App\Entity\User:
+      # bcrypt or argon2i are recommended
+      # argon2i is more secure, but requires PHP 7.2 or the Sodium extension
+      algorithm: bcrypt
+
+
+  access_control:
+    - { path: ^/(login|logout), roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/, roles: ROLE_USER }
+  providers:
+      # used to reload user from session & other features (e.g. switch_user)
+      app_user_provider:
+          entity:
+              class: App\Entity\User
+              property: email

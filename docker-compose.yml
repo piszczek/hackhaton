@@ -5,7 +5,7 @@ networks:
     driver: bridge
 
 volumes:
-  orlen-db-mysql:
+  orlen-mysql:
 
 services:
   # INFRASTRUCTURE SERVICES
@@ -35,14 +35,15 @@ services:
 
   orlen_mysql:
     container_name: orlen_mysql
-    image: mysql:latest
+    image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: orlen
 
     ports:
       - 3306:3306
     volumes:
-      - orlen-db-mysql:/var/lib/mysql
+      - orlen-mysql:/var/lib/mysql
     tty: true
 
   # DOMAIN SERVICES
