@@ -16,11 +16,11 @@ class SectionFixtures extends Fixture
         $startPoint = new Point();
         $endPoint = new Point();
 
-        $startPoint->setLatitude('999');
-        $startPoint->setLongitude('999');
+        $startPoint->setLatitude('52.6008266');
+        $startPoint->setLongitude('19.6872685');
 
-        $endPoint->setLongitude('999');
-        $endPoint->setLatitude('99');
+        $endPoint->setLongitude('52.6008481');
+        $endPoint->setLatitude('19.686072');
 
 
         $section = new Section();

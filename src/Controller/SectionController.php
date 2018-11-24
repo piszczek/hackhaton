@@ -6,6 +6,7 @@ use App\Entity\Section;
 use App\Form\SectionType;
 use App\Repository\SectionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,7 +21,7 @@ class SectionController extends AbstractController
      */
     public function index(SectionRepository $sectionRepository): Response
     {
-        return $this->render('section/index.html.twig', ['sections' => $sectionRepository->findAll()]);
+        return $this->render('section/index.html.twig', ['sections' => 2]);
     }
 
     /**
@@ -59,13 +60,15 @@ class SectionController extends AbstractController
      */
     public function edit(Request $request, Section $section): Response
     {
-        $form = $this->createForm(SectionType::class, $section);
+        $form = $this->createForm(SectionType::class, $section, [
+            'action' => $this->generateUrl('section_edit', ['id' => $section->getId()])
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('section_index', ['id' => $section->getId()]);
+            return new JsonResponse([], Response::HTTP_OK);
         }
 
         return $this->render('section/edit.html.twig', [

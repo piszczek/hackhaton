@@ -13,8 +13,8 @@ class RestrictionType extends AbstractType
     {
         $builder
 //            ->add('type')
-            ->add('startAt')
-            ->add('endAt')
+//            ->add('startAt')
+//            ->add('endAt')
 //            ->add('valueFrom')
             ->add('valueTo')
 //            ->add('section')

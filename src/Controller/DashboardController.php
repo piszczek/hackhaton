@@ -12,11 +12,4 @@ class DashboardController extends AbstractController
     {
         return $this->render('base.html.twig');
     }
-
-    /**
-     */
-    public function map()
-    {
-        return $this->render('Dashboard/map.html.twig');
-    }
 }
