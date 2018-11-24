@@ -1,0 +1,44 @@
+.map-section {
+  margin: 60px 0;
+  .white-bg {
+    padding: 20px;
+  }
+  h5 {
+    margin: 10px 0 20px;
+  }
+  &__container {
+    overflow: hidden;
+    &.active {
+      .map {
+        width: 70%;
+      }
+    }
+    .map {
+      float: left;
+      width: 100%;
+      transition: 0.2s ease;
+      height: 700px;
+    }
+    .polyline-modal {
+      float: right;
+      width: 0;
+      overflow: hidden;
+      transition: 0.2s ease;
+      position: relative;
+      height: 700px;
+      &.show {
+        width: 30%;
+      }
+      .loader {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .inner {
+        padding: 20px;
+
+      }
+    }
+  }
+}

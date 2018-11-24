@@ -11953,6 +11953,10 @@ a {
   a:hover {
     opacity: 0.8; }
 
+.white-bg {
+  background: white;
+  border-radius: 5px; }
+
 @font-face {
   font-family: 'icomoon';
   src: url("./../fonts/icomoon.eot?krykt5");
@@ -12004,6 +12008,90 @@ a {
 .icomoon-orlen_logo:before {
   content: "\e907";
   color: #e10226; }
+
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px; }
+
+.lds-ellipsis div {
+  position: absolute;
+  top: 27px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #E10226;
+  -webkit-animation-timing-function: cubic-bezier(0, 1, 1, 0);
+          animation-timing-function: cubic-bezier(0, 1, 1, 0); }
+
+.lds-ellipsis div:nth-child(1) {
+  left: 6px;
+  -webkit-animation: lds-ellipsis1 0.6s infinite;
+          animation: lds-ellipsis1 0.6s infinite; }
+
+.lds-ellipsis div:nth-child(2) {
+  left: 6px;
+  -webkit-animation: lds-ellipsis2 0.6s infinite;
+          animation: lds-ellipsis2 0.6s infinite; }
+
+.lds-ellipsis div:nth-child(3) {
+  left: 26px;
+  -webkit-animation: lds-ellipsis2 0.6s infinite;
+          animation: lds-ellipsis2 0.6s infinite; }
+
+.lds-ellipsis div:nth-child(4) {
+  left: 45px;
+  -webkit-animation: lds-ellipsis3 0.6s infinite;
+          animation: lds-ellipsis3 0.6s infinite; }
+
+@-webkit-keyframes lds-ellipsis1 {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0); }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@keyframes lds-ellipsis1 {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0); }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@-webkit-keyframes lds-ellipsis3 {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0); } }
+
+@keyframes lds-ellipsis3 {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0); } }
+
+@-webkit-keyframes lds-ellipsis2 {
+  0% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0); }
+  100% {
+    -webkit-transform: translate(19px, 0);
+            transform: translate(19px, 0); } }
+
+@keyframes lds-ellipsis2 {
+  0% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0); }
+  100% {
+    -webkit-transform: translate(19px, 0);
+            transform: translate(19px, 0); } }
 
 .header {
   overflow: hidden;
@@ -12065,6 +12153,41 @@ a {
 .dashboard__content {
   background: white;
   padding: 20px; }
+
+.map-section {
+  margin: 60px 0; }
+  .map-section .white-bg {
+    padding: 20px; }
+  .map-section h5 {
+    margin: 10px 0 20px; }
+  .map-section__container {
+    overflow: hidden; }
+    .map-section__container.active .map {
+      width: 70%; }
+    .map-section__container .map {
+      float: left;
+      width: 100%;
+      -webkit-transition: 0.2s ease;
+      transition: 0.2s ease;
+      height: 700px; }
+    .map-section__container .polyline-modal {
+      float: right;
+      width: 0;
+      overflow: hidden;
+      -webkit-transition: 0.2s ease;
+      transition: 0.2s ease;
+      position: relative;
+      height: 700px; }
+      .map-section__container .polyline-modal.show {
+        width: 30%; }
+      .map-section__container .polyline-modal .loader {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%); }
+      .map-section__container .polyline-modal .inner {
+        padding: 20px; }
 
 .mdl-button {
   background: #E10226 !important;

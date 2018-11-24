@@ -1,57 +1,72 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h3>My Google Maps Demo</h3>
 
-    <div id="map" style="height: 400px;width: 100%"></div>
-    <div id="polyline-modal">
-    </div>
-    <script src="/static/js/Router.js"></script>
-    <script>
-        const editPolyline = (polylineId) => {
-            const modal = document.querySelector('#polyline-modal');
-            const router = new Router();
+    <section class="map-section">
+        <div class="wrapper">
+            <div class="white-bg">
+                <h5>Konfiguracja mapy</h5>
+                <div id="map-section-container" class="map-section__container">
+                    <div id="map" class="map"></div>
+                    <div id="polyline-modal" class="polyline-modal">
+                        <div class="loader">
+                            <div class="lds-ellipsis">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script src="/static/js/Router.js"></script>
+                <script>
+                    const editPolyline = (polylineId) => {
+                        const modal = document.querySelector('#polyline-modal');
+                        const router = new Router();
+                        const mapDetails = document.querySelector('#map-section-container');
 
-            modal.classList.add('show');
-            router.makeRequest({
-                'method': 'GET',
-                'url': '{{ path('section_edit', {'id': '__ID__'}) }}'.replace('__ID__', polylineId),
-                'headers': {
-                    'X-Requested-With': 'XMLHttpRequest',
-                },
-            }).then(response => {
-                modal.innerHTML = response;
-                const sectionForm = document.querySelector('form');
-                sectionForm.addEventListener('submit', event => {
-                    event.preventDefault();
+                        modal.classList.add('show');
+                        mapDetails.classList.add('active');
+                        router.makeRequest({
+                            'method': 'GET',
+                            'url': '{{ path('section_edit', {'id': '__ID__'}) }}'.replace('__ID__', polylineId),
+                            'headers': {
+                                'X-Requested-With': 'XMLHttpRequest',
+                            },
+                        }).then(response => {
+                            modal.innerHTML = response;
+                            const sectionForm = document.querySelector('form');
+                            sectionForm.addEventListener('submit', event => {
+                                event.preventDefault();
 
-                    const formData = new FormData(sectionForm);
+                                const formData = new FormData(sectionForm);
 
-                    router.makeRequest({
-                        'method': 'POST',
-                        'url': sectionForm.getAttribute('action'),
-                        'headers': {
-                            'X-Requested-With': 'XMLHttpRequest',
-                        },
-                        'parameters': formData
-                    }).then(response => {
-                        console.log(response);
-                        modal.innerHTML = null;
-                    }).catch(error => {
-                        console.error(error);
-                    })
-                })
-            }).catch(error => {
-                alert('Error occurred :( Please, refresh site and try again!');
-                console.error(error);
-            });
-        };
+                                router.makeRequest({
+                                    'method': 'POST',
+                                    'url': sectionForm.getAttribute('action'),
+                                    'headers': {
+                                        'X-Requested-With': 'XMLHttpRequest',
+                                    },
+                                    'parameters': formData
+                                }).then(response => {
+                                    console.log(response);
+                                    modal.innerHTML = null;
+                                }).catch(error => {
+                                    console.error(error);
+                                })
+                            })
+                        }).catch(error => {
+                            alert('Error occurred :( Please, refresh site and try again!');
+                            console.error(error);
+                        });
+                    };
 
         async function initMap() {
             const routes = JSON.parse('{{ sections|raw }}');
             const refinery = {lat: 52.588353, lng: 19.672254};
             const map = new google.maps.Map(
-                document.getElementById('map'), {zoom: 13.98, center: refinery}
+                document.getElementById('map'), {zoom: 13.98, center: refinery, mapTypeId: google.maps.MapTypeId.HYBRID}
             );
 
             for (let route of routes) {
