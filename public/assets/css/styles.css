@@ -11922,7 +11922,8 @@ body {
   font-size: 16px;
   color: #333333;
   font-family: 'Roboto', sans-serif;
-  font-weight: 400; }
+  font-weight: 400;
+  background: #F5F7F9; }
 
 h1 {
   font-size: 96px; }
@@ -12055,6 +12056,16 @@ a {
   .login__form input {
     width: 100%; }
 
+.dashboard__top {
+  margin: 60px 0; }
+  .dashboard__top .distance {
+    float: right;
+    padding-top: 10px; }
+
+.dashboard__content {
+  background: white;
+  padding: 20px; }
+
 .mdl-button {
   background: #E10226 !important;
   color: white !important;
@@ -12062,11 +12073,13 @@ a {
   border-radius: 3px;
   font-size: 14px;
   letter-spacing: 1.5px; }
+  .mdl-button i {
+    font-style: normal; }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px white inset; }
+  -webkit-box-shadow: 0 0 0 30px transparent inset; }
 
 /*# sourceMappingURL=styles.css.map */

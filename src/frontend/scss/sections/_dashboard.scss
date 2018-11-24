@@ -1,0 +1,13 @@
+.dashboard {
+  &__top {
+    margin: 60px 0;
+    .distance {
+      float: right;
+      padding-top: 10px;
+    }
+  }
+  &__content {
+    background: white;
+    padding: 20px;
+  }
+}
