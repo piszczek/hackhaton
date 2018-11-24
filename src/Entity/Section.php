@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SectionRepository")
  */
-class Section
+class Section implements \JsonSerializable
 {
     /**
      * @ORM\Id()
@@ -24,21 +24,26 @@ class Section
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Point",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Point", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $startPoint;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Point",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Point", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $endPoint;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Restriction", mappedBy="section", orphanRemoval=true,cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Restriction", mappedBy="section", orphanRemoval=true,cascade={"persist"}, fetch="EAGER")
      */
     private $restrictions;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $distance;
 
     public function __construct()
     {
@@ -113,6 +118,47 @@ class Section
                 $restriction->setSection(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    public function jsonSerialize()
+    {
+        $restrictions = [];
+        foreach ($this->getRestrictions() as $restriction) {
+            $restrictions[] = $restriction->jsonSerialize();
+        }
+
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'startPoint' => [
+                'lat' => (float) $this->getStartPoint()->getLatitude(),
+                'lng' => (float) $this->getStartPoint()->getLongitude(),
+            ],
+            'endPoint' => [
+                'lat' => (float) $this->getEndPoint()->getLatitude(),
+                'lng' => (float) $this->getEndPoint()->getLongitude(),
+            ],
+            'restrictions' => $restrictions
+        ];
+    }
+
+    public function getDistance(): ?int
+    {
+        return $this->distance;
+    }
+
+    public function setDistance(int $distance): self
+    {
+        $this->distance = $distance;
 
         return $this;
     }

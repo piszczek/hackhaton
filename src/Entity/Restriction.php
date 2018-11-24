@@ -2,12 +2,13 @@
 
 namespace App\Entity;
 
+use App\Entity\Enum\RestrictionType;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RestrictionRepository")
  */
-class Restriction
+class Restriction implements \JsonSerializable
 {
     /**
      * @ORM\Id()
@@ -127,5 +128,39 @@ class Restriction
         $this->valueTo = $valueTo;
 
         return $this;
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    public function jsonSerialize()
+    {
+        return [
+          'id' => $this->getId(),
+          'label' => $this->getLabel(),
+          'type' => $this->getType(),
+          'valueTo' => $this->getValueTo()
+        ];
+    }
+
+    private function getLabel(): string
+    {
+        switch ($this->getType()) {
+            case RestrictionType::TYPE_WEIGHT:
+                return 'Waga';
+            case RestrictionType::TYPE_WIDTH:
+                return 'Szerokość';
+            case RestrictionType::TYPE_HEIGHT:
+                return 'Wysokość';
+            case RestrictionType::TYPE_ACTIVE:
+                return 'Włączona/Wyłączona';
+
+        }
+
+        return 'unknown';
     }
 }

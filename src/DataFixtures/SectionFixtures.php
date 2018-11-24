@@ -19,18 +19,18 @@ class SectionFixtures extends Fixture
         foreach ($sections as $section) {
 
 
-            $startPoint = $manager->getRepository(Point::class)->findByCords($section['start_point'][0], $section['start_point'][1]);
+            $startPoint = $manager->getRepository(Point::class)->findByCords($section['startPoint'][0], $section['startPoint'][1]);
             if (!$startPoint) {
                 $startPoint = new Point();
-                $startPoint->setLatitude($section['start_point'][0]);
-                $startPoint->setLongitude($section['start_point'][1]);
+                $startPoint->setLatitude($section['startPoint'][0]);
+                $startPoint->setLongitude($section['startPoint'][1]);
             }
 
-            $endPoint = $manager->getRepository(Point::class)->findByCords($section['end_point'][0], $section['end_point'][1]);
+            $endPoint = $manager->getRepository(Point::class)->findByCords($section['endPoint'][0], $section['endPoint'][1]);
             if (!$endPoint) {
                 $endPoint = new Point();
-                $endPoint->setLongitude($section['end_point'][0]);
-                $endPoint->setLatitude($section['start_point'][1]);
+                $endPoint->setLongitude($section['endPoint'][0]);
+                $endPoint->setLatitude($section['endPoint'][1]);
             }
 
 
@@ -39,18 +39,23 @@ class SectionFixtures extends Fixture
 
             $section->setStartPoint($startPoint);
             $section->setEndPoint($endPoint);
+            $section->setDistance($this->calcDistance($section['startPoint'][0], $section['startPoint'][1], $section['endPoint'][0], $section['endPoint'][1]));
 
             $hightRestrction = new Restriction(RestrictionType::TYPE_HEIGHT);
             $hightRestrction->setValueTo("999");
-            $widthRestrion = new Restriction(RestrictionType::TYPE_WIDTH);
-            $widthRestrion->setValueTo("999");
-            $weightRestrion = new Restriction(RestrictionType::TYPE_WEIGHT);
-            $weightRestrion->setValueTo("999");
-
+            $widthRestriction = new Restriction(RestrictionType::TYPE_WIDTH);
+            $widthRestriction->setValueTo("999");
+            $weightRestriction = new Restriction(RestrictionType::TYPE_WEIGHT);
+            $weightRestriction->setValueTo("999");
+            $weightRestriction = new Restriction(RestrictionType::TYPE_WEIGHT);
+            $weightRestriction->setValueTo("999");
+            $activeRestriction = new Restriction(RestrictionType::TYPE_WEIGHT);
+            $activeRestriction->setValueTo("1");
 
             $section->addRestriction($hightRestrction);
-            $section->addRestriction($widthRestrion);
-            $section->addRestriction($weightRestrion);
+            $section->addRestriction($widthRestriction);
+            $section->addRestriction($weightRestriction);
+            $section->addRestriction($activeRestriction);
 
             $manager->persist($section);
 

@@ -2,11 +2,18 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Table;
+use Doctrine\ORM\Mapping\UniqueConstraint;
 
 /**
+ *
+ * @Table(name="point",
+ *    uniqueConstraints={
+ *        @UniqueConstraint(name="cords_unique",
+ *            columns={"latitude", "longitude"})
+ *    }
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\PointRepository")
  */
 class Point
