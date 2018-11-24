@@ -24,19 +24,19 @@ class Section
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Point")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Point",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $startPoint;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Point")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Point",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $endPoint;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Restriction", mappedBy="section", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Restriction", mappedBy="section", orphanRemoval=true,cascade={"persist"})
      */
     private $restrictions;
 

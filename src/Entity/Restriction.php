@@ -22,7 +22,7 @@ class Restriction
     private $type;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Section", inversedBy="restrictions")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Section", inversedBy="restrictions", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $section;
@@ -38,7 +38,7 @@ class Restriction
     private $endAt;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $valueFrom;
 
@@ -46,6 +46,11 @@ class Restriction
      * @ORM\Column(type="string", length=255)
      */
     private $valueTo;
+
+    public function __construct(int $type)
+    {
+        $this->type = $type;
+    }
 
     public function getId(): ?int
     {

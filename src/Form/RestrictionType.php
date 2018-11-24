@@ -2,31 +2,29 @@
 
 namespace App\Form;
 
-use App\Entity\Section;
+use App\Entity\Restriction;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SectionType extends AbstractType
+class RestrictionType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-//            ->add('startPoint')
-//            ->add('endPoint')
-            ->add('restrictions', CollectionType::class,
-                [
-                    'entry_type' => RestrictionType::class
-                ])
+//            ->add('type')
+            ->add('startAt')
+            ->add('endAt')
+//            ->add('valueFrom')
+            ->add('valueTo')
+//            ->add('section')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Section::class,
+            'data_class' => Restriction::class,
         ]);
     }
 }
