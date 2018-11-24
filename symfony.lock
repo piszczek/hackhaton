@@ -82,5 +82,8 @@
     },
     "symfony/yaml": {
         "version": "v4.1.7"
+    },
+    "twig/twig": {
+        "version": "v2.5.0"
     }
 }
