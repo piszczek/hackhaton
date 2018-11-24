@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Enum\VehicleType;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -29,12 +30,13 @@ class Vehicle
     private $type;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="vehicle", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="vehicle", orphanRemoval=true, cascade={"persist"})
      */
     private $properties;
 
-    public function __construct()
+    public function __construct(int $type = VehicleType::TYPE_BUS)
     {
+        $this->type = $type;
         $this->properties = new ArrayCollection();
     }
 
