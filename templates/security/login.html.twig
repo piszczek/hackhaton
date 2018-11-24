@@ -15,11 +15,11 @@
                         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                     {% endif %}
                     <div class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" type="text" value="{{ last_username }}" id="inputEmail" name="email">
+                        <input class="mdl-textfield__input" type="text" value="{{ last_username }}" id="inputEmail" name="email" autocomplete="off">
                         <label class="mdl-textfield__label" for="sample1">E-mail</label>
                     </div>
                     <div class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" name="password" type="password" id="inputPassword">
+                        <input class="mdl-textfield__input" name="password" type="password" id="inputPassword" autocomplete="off">
                         <label class="mdl-textfield__label" for="sample1">Hasło</label>
                     </div>
                     <input type="hidden" name="_csrf_token"

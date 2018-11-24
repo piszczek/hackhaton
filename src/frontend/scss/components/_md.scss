@@ -895,18 +895,16 @@ h6 {
   line-height: 24px;
   letter-spacing: 0.04em;
   margin-top: 24px;
-  margin-bottom: 16px; }
+  margin-bottom: 16px;
+}
 
 p {
   font-size: 14px;
   font-weight: 400;
   line-height: 24px;
   letter-spacing: 0;
-  margin-bottom: 16px; }
-
-a {
-  color: rgb(255,64,129);
-  font-weight: 500; }
+  margin-bottom: 16px;
+}
 
 blockquote {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
@@ -4548,7 +4546,7 @@ fieldset[disabled] .mdl-checkbox .mdl-checkbox__box-outline,
   box-shadow: 0 0 0px 8px rgba(0, 0, 0, 0.1);
   background-color: rgba(0, 0, 0, 0.1); }
 .mdl-checkbox.is-focused.is-checked .mdl-checkbox__focus-helper {
-  box-shadow: 0 0 0px 8px $red;
+  box-shadow: 0 0 0px 8px;
   background-color: $red; }
 
 .mdl-checkbox__tick-outline {
@@ -7559,9 +7557,6 @@ fieldset[disabled] .mdl-checkbox .mdl-checkbox__ripple-container .mdl-ripple,
   min-height: 64px;
   max-height: 1000px;
   z-index: 3;
-  background-color: rgb(63,81,181);
-  color: rgb(255,255,255);
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   transition-duration: 0.2s;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-property: max-height, box-shadow; }
@@ -10139,7 +10134,7 @@ fieldset[disabled] .mdl-switch .mdl-switch__ripple-container .mdl-ripple,
 
 .mdl-textfield__input {
   border: none;
-  border-bottom: 1px solid rgba(0,0,0, 0.12);
+  border-bottom: 1px solid $red;
   display: block;
   font-size: 16px;
   font-family: "Helvetica", "Arial", sans-serif;
@@ -10208,7 +10203,7 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label,
   color: rgb(213,0,0);
   font-size: 12px; }
 .mdl-textfield__label:after {
-  background-color: rgb(63,81,181);
+  background-color: $red;
   bottom: 20px;
   content: '';
   height: 2px;

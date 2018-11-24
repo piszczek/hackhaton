@@ -1,0 +1,39 @@
+.header {
+  overflow: hidden;
+  padding: 10px 0;
+  border-bottom: 1px solid #F5F7F9;
+  background: white;
+  .logo {
+    float: left;
+    display: flex;
+    h6 {
+      margin: 0;
+      padding: 29px 20px 5px 20px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .mdl-layout-title {
+      font-size: 50px;
+    }
+  }
+  .nav {
+    float: right;
+    padding: 21px 0 10px 0;
+    text-transform: uppercase;
+    font-size: 14px;
+    > div {
+      margin-left: 20px;
+      display: inline-block;
+      vertical-align: top;
+      font-weight: 600;
+      &.hello {
+        span {
+          font-size: 20px;
+          margin-right: 10px;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}
+

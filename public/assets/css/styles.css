@@ -1,47 +1,4 @@
 @charset "UTF-8";
-body {
-  font-size: 16px;
-  color: #333333;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400; }
-
-h1 {
-  font-size: 96px; }
-
-h2 {
-  font-size: 60px; }
-
-h3 {
-  font-size: 48px; }
-
-h4 {
-  font-size: 34px; }
-
-h5 {
-  font-size: 24px; }
-
-h6 {
-  font-size: 20px; }
-
-.login {
-  height: 100vh; }
-  .login .wrapper {
-    width: 330px;
-    margin: 100px auto; }
-    .login .wrapper h6 {
-      text-align: center; }
-  .login__logo {
-    text-align: center; }
-    .login__logo img {
-      max-width: 200px;
-      display: inline-block; }
-  .login__form .action {
-    text-align: center; }
-  .login__form .mdl-textfield {
-    width: 100%; }
-  .login__form input {
-    width: 100%; }
-
 /**
  * material-design-lite - Material Design Components in CSS, JS and HTML
  * @version v1.3.0
@@ -948,10 +905,6 @@ p {
   line-height: 24px;
   letter-spacing: 0;
   margin-bottom: 16px; }
-
-a {
-  color: #ff4081;
-  font-weight: 500; }
 
 blockquote {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
@@ -4667,8 +4620,8 @@ fieldset[disabled] .mdl-checkbox .mdl-checkbox__box-outline,
   background-color: rgba(0, 0, 0, 0.1); }
 
 .mdl-checkbox.is-focused.is-checked .mdl-checkbox__focus-helper {
-  -webkit-box-shadow: 0 0 0px 8px #E10226;
-          box-shadow: 0 0 0px 8px #E10226;
+  -webkit-box-shadow: 0 0 0px 8px;
+          box-shadow: 0 0 0px 8px;
   background-color: #E10226; }
 
 .mdl-checkbox__tick-outline {
@@ -7818,10 +7771,6 @@ fieldset[disabled] .mdl-checkbox .mdl-checkbox__ripple-container .mdl-ripple,
   min-height: 64px;
   max-height: 1000px;
   z-index: 3;
-  background-color: #3f51b5;
-  color: white;
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   -webkit-transition-duration: 0.2s;
           transition-duration: 0.2s;
   -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -10597,7 +10546,7 @@ fieldset[disabled] .mdl-switch .mdl-switch__ripple-container .mdl-ripple,
 
 .mdl-textfield__input {
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid #E10226;
   display: block;
   font-size: 16px;
   font-family: "Helvetica", "Arial", sans-serif;
@@ -10683,7 +10632,7 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label,
   font-size: 12px; }
 
 .mdl-textfield__label:after {
-  background-color: #3f51b5;
+  background-color: #E10226;
   bottom: 20px;
   content: '';
   height: 2px;
@@ -11969,6 +11918,143 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label,
 .mdl-cell--11-offset-desktop.mdl-cell--11-offset-desktop {
     margin-left: 91.6666666667%; } }
 
+body {
+  font-size: 16px;
+  color: #333333;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400; }
+
+h1 {
+  font-size: 96px; }
+
+h2 {
+  font-size: 60px; }
+
+h3 {
+  font-size: 48px; }
+
+h4 {
+  font-size: 34px; }
+
+h5 {
+  font-size: 24px; }
+
+h6 {
+  font-size: 20px; }
+
+.wrapper {
+  width: 1180px;
+  margin: 0 auto; }
+
+a {
+  color: #E10226;
+  text-decoration: none; }
+  a:hover {
+    opacity: 0.8; }
+
+@font-face {
+  font-family: 'icomoon';
+  src: url("./../fonts/icomoon.eot?krykt5");
+  src: url("./../fonts/icomoon.eot?krykt5#iefix") format("embedded-opentype"), url("./../fonts/icomoon.ttf?krykt5") format("truetype"), url("./../fonts/icomoon.woff?krykt5") format("woff"), url("./../fonts/icomoon.svg?krykt5#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+[class^="icomoon-"], [class*=" icomoon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icomoon-Path-1995:before {
+  content: "\e900";
+  color: #e10226; }
+
+.icomoon-outline-local_shipping-24px:before {
+  content: "\e901";
+  color: #e10226; }
+
+.icomoon-outline-directions_bus-24px:before {
+  content: "\e902";
+  color: #fff; }
+
+.icomoon-outline-control_camera-24px:before {
+  content: "\e903";
+  color: #e10226; }
+
+.icomoon-Icon---Event---Filled:before {
+  content: "\e904";
+  color: #6e6e6e; }
+
+.icomoon-Icon---Access-Time---Filled:before {
+  content: "\e905";
+  color: #6e6e6e; }
+
+.icomoon-Icon---Circle---Filled:before {
+  content: "\e906";
+  color: #e10226; }
+
+.icomoon-orlen_logo:before {
+  content: "\e907";
+  color: #e10226; }
+
+.header {
+  overflow: hidden;
+  padding: 10px 0;
+  border-bottom: 1px solid #F5F7F9;
+  background: white; }
+  .header .logo {
+    float: left;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+    .header .logo h6 {
+      margin: 0;
+      padding: 29px 20px 5px 20px;
+      font-size: 14px;
+      font-weight: 600; }
+    .header .logo .mdl-layout-title {
+      font-size: 50px; }
+  .header .nav {
+    float: right;
+    padding: 21px 0 10px 0;
+    text-transform: uppercase;
+    font-size: 14px; }
+    .header .nav > div {
+      margin-left: 20px;
+      display: inline-block;
+      vertical-align: top;
+      font-weight: 600; }
+      .header .nav > div.hello span {
+        font-size: 20px;
+        margin-right: 10px;
+        vertical-align: middle; }
+
+.login {
+  height: 100vh; }
+  .login .wrapper {
+    width: 330px;
+    margin: 100px auto; }
+    .login .wrapper h6 {
+      text-align: center; }
+  .login__logo {
+    text-align: center; }
+    .login__logo img {
+      max-width: 200px;
+      display: inline-block; }
+  .login__form .action {
+    text-align: center; }
+  .login__form .mdl-textfield {
+    width: 100%; }
+  .login__form input {
+    width: 100%; }
+
 .mdl-button {
   background: #E10226 !important;
   color: white !important;
@@ -11979,7 +12065,8 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label,
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
-input:-webkit-autofill:focus {
-  background: transparent; }
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset; }
 
 /*# sourceMappingURL=styles.css.map */
