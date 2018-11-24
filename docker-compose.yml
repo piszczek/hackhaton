@@ -1,0 +1,64 @@
+version: '3'
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  orlen-db-mysql:
+
+services:
+  # INFRASTRUCTURE SERVICES
+  http:
+    container_name: orlen_http
+    build: docker/http
+    networks:
+      default:
+        aliases:
+          - ${HTTP_DOMAIN}
+    # add env variables do vhost conf files
+    environment:
+      - HTTP_DOMAIN=${HTTP_DOMAIN}
+    command: sh /bin/run-nginx.sh
+    depends_on:
+      - orlen_service
+    ports:
+      - 80:80
+      - 443:443
+    expose:
+      - 80
+      - 443
+    volumes:
+      - ./:/opt/orlen:cached
+    working_dir: /etc/nginx
+    tty: true
+
+  orlen_mysql:
+    container_name: orlen_mysql
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+
+    ports:
+      - 3306:3306
+    volumes:
+      - orlen-db-mysql:/var/lib/mysql
+    tty: true
+
+  # DOMAIN SERVICES
+
+  orlen_service:
+    container_name: orlen_service
+    build: docker/main
+    depends_on:
+      - orlen_mysql
+    networks:
+      - default
+    environment:
+      - USER_ID=${USER_ID}
+
+    volumes:
+      - ./:/opt/orlen:cached
+
+    working_dir: /opt/orlen
+    tty: true
