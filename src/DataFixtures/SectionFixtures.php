@@ -11,32 +11,38 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class SectionFixtures extends Fixture
 {
-
     public function load(ObjectManager $manager)
     {
         $points = [];
+        $collector = [];
         $sections = $this->getSections();
 
         foreach ($sections as $sect) {
 
 
-            if (!in_array($sect['startPoint'][0], $points)) {
+            if (!isset($collector[(string)$sect['startPoint'][0]])) {
                 $startPoint = new Point();
                 $startPoint->setLatitude($sect['startPoint'][0]);
                 $startPoint->setLongitude($sect['startPoint'][1]);
 
+                $collector[(string)$sect['startPoint'][0]] = $startPoint;
                 $points[] = $sect['startPoint'][0];
             }
-
-            if (!in_array($sect['endPoint'][0], $points)) {
-                $endPoint = new Point();
-                $endPoint->setLongitude($sect['endPoint'][0]);
-                $endPoint->setLatitude($sect['endPoint'][1]);
-
-                $points[] = $sect['endPoint'][0];
+            else {
+                $startPoint = $collector[(string)$sect['startPoint'][0]];
             }
 
+            if (!isset($collector[(string)$sect['endPoint'][0]])) {
+                $endPoint = new Point();
+                $endPoint->setLatitude($sect['endPoint'][0]);
+                $endPoint->setLongitude($sect['endPoint'][1]);
 
+                $collector[(string)$sect['endPoint'][0]] = $endPoint;
+                $points[] = $sect['endPoint'][0];
+            }
+            else {
+                $endPoint = $collector[(string)$sect['endPoint'][0]];
+            }
 
             $section = new Section();
             $section->setName(rand(0,10000));
