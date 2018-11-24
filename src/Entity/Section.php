@@ -94,7 +94,7 @@ class Section
         return $this->restrictions;
     }
 
-    public function addProperty(Restriction $restriction): self
+    public function addRestriction(Restriction $restriction): self
     {
         if (!$this->restrictions->contains($restriction)) {
             $this->restrictions[] = $restriction;
