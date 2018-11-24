@@ -28,6 +28,7 @@ class SectionFixtures extends Fixture
 
         $section->setEndPoint($endPoint);
         $section->setStartPoint($startPoint);
+        $section->setDistance(1231);
 
         $hightRestrction = new Restriction(RestrictionType::TYPE_HEIGHT);
         $hightRestrction->setValueTo("1999");

@@ -24,13 +24,13 @@ class Section implements \JsonSerializable
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Point",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Point", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $startPoint;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Point",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Point", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $endPoint;
@@ -39,6 +39,11 @@ class Section implements \JsonSerializable
      * @ORM\OneToMany(targetEntity="App\Entity\Restriction", mappedBy="section", orphanRemoval=true,cascade={"persist"})
      */
     private $restrictions;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $distance;
 
     public function __construct()
     {
@@ -133,5 +138,17 @@ class Section implements \JsonSerializable
                 'longitude' => $this->getStartPoint()->getLongitude(),
             ]
         ];
+    }
+
+    public function getDistance(): ?int
+    {
+        return $this->distance;
+    }
+
+    public function setDistance(int $distance): self
+    {
+        $this->distance = $distance;
+
+        return $this;
     }
 }
