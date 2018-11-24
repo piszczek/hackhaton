@@ -19,15 +19,15 @@ class SectionFixtures extends Fixture
         $startPoint->setLatitude('52.6008266');
         $startPoint->setLongitude('19.6872685');
 
-        $endPoint->setLongitude('52.6008481');
-        $endPoint->setLatitude('19.686072');
-
+        $endPoint->setLatitude('52.6008481');
+        $endPoint->setLongitude('19.686072');
 
         $section = new Section();
         $section->setName('A2');
 
         $section->setEndPoint($endPoint);
         $section->setStartPoint($startPoint);
+        $section->setDistance(1231);
 
         $hightRestrction = new Restriction(RestrictionType::TYPE_HEIGHT);
         $hightRestrction->setValueTo("1999");
@@ -36,10 +36,14 @@ class SectionFixtures extends Fixture
         $weightRestrion = new Restriction(RestrictionType::TYPE_WEIGHT);
         $weightRestrion->setValueTo("12312");
 
+        $activeRestriction = new Restriction(RestrictionType::TYPE_ACTIVE);
+        $activeRestriction->setValueTo("1");
+
 
         $section->addRestriction($hightRestrction);
         $section->addRestriction($widthRestrion);
         $section->addRestriction($weightRestrion);
+        $section->addRestriction($activeRestriction);
 
         $manager->persist($section);
 

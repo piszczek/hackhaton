@@ -21,7 +21,9 @@ class SectionController extends AbstractController
      */
     public function index(SectionRepository $sectionRepository): Response
     {
-        return $this->render('section/index.html.twig', ['sections' => 2]);
+        $sections = json_encode($sectionRepository->findAll());
+
+        return $this->render('section/index.html.twig', ['sections' => $sections]);
     }
 
     /**
