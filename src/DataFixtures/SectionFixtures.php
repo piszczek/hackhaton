@@ -19,9 +19,8 @@ class SectionFixtures extends Fixture
         $startPoint->setLatitude('52.6008266');
         $startPoint->setLongitude('19.6872685');
 
-        $endPoint->setLongitude('52.6008481');
-        $endPoint->setLatitude('19.686072');
-
+        $endPoint->setLatitude('52.6008481');
+        $endPoint->setLongitude('19.686072');
 
         $section = new Section();
         $section->setName('A2');

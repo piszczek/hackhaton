@@ -2,9 +2,6 @@
 
 {% block body %}
     <h3>My Google Maps Demo</h3>
-    <pre>
-        {{ sections }}
-    </pre>
 
     <div id="map" style="height: 400px;width: 100%"></div>
     <div id="polyline-modal">
@@ -51,14 +48,7 @@
         };
 
         async function initMap() {
-            const routes = [
-                {start: {lat: 52.6008266,lng: 19.6872685}, end: {lat: 52.6008481,lng: 19.686072}},
-                {start: {lat: 52.6008481,lng: 19.686072}, end: {lat: 52.6007922,lng: 19.6854842}},
-                {start: {lat: 52.6007922,lng: 19.6854842}, end: {lat: 52.6000353,lng: 19.685292}},
-                {start: {lat: 52.6000353,lng: 19.685292}, end: {lat: 52.6000239,lng: 19.6862196}},
-                {start: {lat: 52.6000121,lng: 19.6865964}, end: {lat: 52.6000353,lng: 19.685292}},
-                {start: {lat: 52.6008481,lng: 19.686072}, end: {lat: 52.6000239,lng: 19.6862196}}
-            ];
+            const routes = JSON.parse('{{ sections|raw }}');
             const refinery = {lat: 52.588353, lng: 19.672254};
             const map = new google.maps.Map(
                 document.getElementById('map'), {zoom: 13.98, center: refinery}
@@ -66,12 +56,12 @@
 
             for (let route of routes) {
                 let routePolyline = new google.maps.Polyline({
-                    path: [route.start, route.end],
+                    path: [route.startPoint, route.endPoint],
                     geodesic: true,
                     strokeColor: '#FF0000',
                     strokeOpacity: 1.0,
                     strokeWeight: 4,
-                    elementId: 1
+                    elementId: route.id
                 });
                 routePolyline.setMap(map);
                 google.maps.event.addListener(routePolyline, 'click', () => editPolyline(routePolyline['elementId']))

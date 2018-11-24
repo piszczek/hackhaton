@@ -140,12 +140,12 @@ class Section implements \JsonSerializable
             'id' => $this->getId(),
             'name' => $this->getName(),
             'startPoint' => [
-                'latitude' => $this->getStartPoint()->getLatitude(),
-                'longitude' => $this->getStartPoint()->getLongitude(),
+                'lat' => (float) $this->getStartPoint()->getLatitude(),
+                'lng' => (float) $this->getStartPoint()->getLongitude(),
             ],
             'endPoint' => [
-                'latitude' => $this->getEndPoint()->getLatitude(),
-                'longitude' => $this->getEndPoint()->getLongitude(),
+                'lat' => (float) $this->getEndPoint()->getLatitude(),
+                'lng' => (float) $this->getEndPoint()->getLongitude(),
             ],
             'restrictions' => $restrictions
         ];
