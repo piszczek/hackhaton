@@ -3,6 +3,9 @@
   .wrapper {
     width: 330px;
     margin: 100px auto;
+    h6 {
+      text-align: center;
+    }
   }
   &__logo {
     text-align: center;
@@ -12,6 +15,15 @@
     }
   }
   &__form {
+    .action {
+      text-align: center;
+    }
+    .mdl-textfield {
+      width: 100%;
+    }
+    input {
+      width: 100%;
 
+    }
   }
 }

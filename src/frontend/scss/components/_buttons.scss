@@ -1,3 +1,14 @@
-.btn {
+.mdl-button  {
+  background: $red !important;
+  color: white !important;
+  text-transform: uppercase;
+  border-radius: 3px;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+}
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+ background: transparent;
 }

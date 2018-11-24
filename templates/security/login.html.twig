@@ -8,7 +8,7 @@
             <div class="login__logo">
                 <img src="./assets/img/logo.svg" alt="logo">
             </div>
-            <div>Time management system</div>
+            <h6>Time management system</h6>
             <div class="login__form">
                 <form method="post">
                     {% if error %}
@@ -26,9 +26,11 @@
                            value="{{ csrf_token('authenticate') }}"
                     >
 
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" type="submit">
-                        Zaloguj
-                    </button>
+                    <div class="action">
+                        <button class="mdl-button mdl-js-button mdl-button--raised" type="submit">
+                            Zaloguj
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
