@@ -5,11 +5,14 @@
   border-radius: 3px;
   font-size: 14px;
   letter-spacing: 1.5px;
+  i {
+    font-style: normal;
+  }
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active  {
-  -webkit-box-shadow: 0 0 0 30px white inset;
+  -webkit-box-shadow: 0 0 0 30px transparent inset;
 }
