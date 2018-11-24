@@ -36,7 +36,7 @@ class Section implements \JsonSerializable
     private $endPoint;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Restriction", mappedBy="section", orphanRemoval=true,cascade={"persist"}, fetch="EAGER")
+     * @ORM\OneToMany(targetEntity="App\Entity\Restriction", mappedBy="section", orphanRemoval=true, cascade={"persist"}, fetch="EAGER")
      */
     private $restrictions;
 
