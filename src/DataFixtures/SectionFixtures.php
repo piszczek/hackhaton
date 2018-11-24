@@ -37,10 +37,14 @@ class SectionFixtures extends Fixture
         $weightRestrion = new Restriction(RestrictionType::TYPE_WEIGHT);
         $weightRestrion->setValueTo("12312");
 
+        $activeRestriction = new Restriction(RestrictionType::TYPE_ACTIVE);
+        $activeRestriction->setValueTo("1");
+
 
         $section->addRestriction($hightRestrction);
         $section->addRestriction($widthRestrion);
         $section->addRestriction($weightRestrion);
+        $section->addRestriction($activeRestriction);
 
         $manager->persist($section);
 

@@ -36,7 +36,7 @@ class Section implements \JsonSerializable
     private $endPoint;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Restriction", mappedBy="section", orphanRemoval=true,cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Restriction", mappedBy="section", orphanRemoval=true,cascade={"persist"}, fetch="EAGER")
      */
     private $restrictions;
 
@@ -131,6 +131,11 @@ class Section implements \JsonSerializable
      */
     public function jsonSerialize()
     {
+        $restrictions = [];
+        foreach ($this->getRestrictions() as $restriction) {
+            $restrictions[] = $restriction->jsonSerialize();
+        }
+
         return [
             'id' => $this->getId(),
             'name' => $this->getName(),
@@ -141,7 +146,8 @@ class Section implements \JsonSerializable
             'endPoint' => [
                 'latitude' => $this->getEndPoint()->getLatitude(),
                 'longitude' => $this->getEndPoint()->getLongitude(),
-            ]
+            ],
+            'restrictions' => $restrictions
         ];
     }
 
