@@ -1,13 +1,15 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Edit Section{% endblock %}
-
 {% block body %}
-    <h1>Edit Section</h1>
-
-    {{ include('section/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('section_index') }}">back to list</a>
-
-    {{ include('section/_delete_form.html.twig') }}
+    {# @var section \App\Entity\Section #}
+    <div class="top">
+        <div class="inner">
+            Odcinek: <strong>{{ section.name }}</strong> <br> <small>Włączona w ruch</small>
+        </div>
+    </div>
+    <div class="content">
+        <div class="inner">
+            {{ include('section/_form.html.twig', {'button_label': 'Update'}) }}
+            <a href="{{ path('section_index') }}">back to list</a>
+            {{ include('section/_delete_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}
