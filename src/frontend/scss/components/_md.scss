@@ -4591,7 +4591,8 @@ fieldset[disabled] .mdl-checkbox .mdl-checkbox__label,
   overflow: hidden;
   -webkit-mask-image: -webkit-radial-gradient(circle, white, black); }
 .mdl-checkbox__ripple-container .mdl-ripple {
-  background: rgb(63,81,181); }
+  background: $red;
+}
 fieldset[disabled] .mdl-checkbox .mdl-checkbox__ripple-container,
 .mdl-checkbox.is-disabled .mdl-checkbox__ripple-container {
   cursor: auto; }
