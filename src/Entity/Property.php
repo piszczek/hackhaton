@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Enum\RestrictionType;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,6 +32,11 @@ class Property
      * @ORM\JoinColumn(nullable=false)
      */
     private $vehicle;
+
+    public function __construct(int $type = RestrictionType::TYPE_WEIGHT)
+    {
+        $this->type = $type;
+    }
 
     public function getId(): ?int
     {
