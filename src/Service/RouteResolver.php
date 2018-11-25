@@ -6,20 +6,29 @@ use App\Entity\Point;
 use App\Entity\Route;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use App\Repository\SectionRepository;
+use Fisharebest\Algorithm\Dijkstra;
 
 
 class RouteResolver
 {
+    protected $sectionRepo;
+
+    public function __construct(SectionRepository $sectionRepo)
+    {
+        $this->sectionRepo = $sectionRepo;
+    }
+
     /**
      *
      * @param Route $route
      * @return Collection
      */
-    public function resolve(Point $startPoint, Point $endPoint, Collection $sections): array
+    public function resolve(Point $startPoint, Point $endPoint, $sections): array
     {
         $routeSections = [];
 
-        $graph =[];
+        $graph = [];
         foreach ($sections as $segment) {
             if (!array_key_exists($segment->getStartPoint()->getId(), $graph)) {
                 $graph[$segment->getStartPoint()->getId()] = [];
@@ -33,12 +42,18 @@ class RouteResolver
             $graph[$segment->getEndPoint()->getId()][$segment->getStartPoint()->getId()] = $segment->getDistance();
         }
 
-        $algorithm = new \Fisharebest\Algorithm\Dijkstra($graph);
+        $algorithm = new Dijkstra($graph);
         $path = $algorithm->shortestPaths($startPoint->getId(), $endPoint->getId());
 
-        $tuples = $this->listToTuples($path);
+        $tuples = $this->listToTuples($path[0]);
 
-//        TODO: w tym momencie mamy zwroconą tablicę z krotkami [startPoint, endPoint]
+        foreach ($tuples as $tuple) {
+            $sectionObj = $this->sectionRepo->findOneBy(['startPoint' => $tuple[0], 'endPoint' => $tuple[1]]);
+            if(is_null($sectionObj)) {
+                $sectionObj = $this->sectionRepo->findOneBy(['startPoint' => $tuple[1], 'endPoint' => $tuple[0]]);
+            }
+            array_push($routeSections, $sectionObj);
+        }
 
         return $routeSections;
     }
