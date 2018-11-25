@@ -15,8 +15,8 @@
         font-weight: 600;
         display: block;
       }
-      select {
-        margin: 5px;
+      select, input[type="date"], input[type="time"] {
+        margin: 5px 5px 5px 0;
       }
     }
   }
