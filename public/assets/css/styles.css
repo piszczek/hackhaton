@@ -12288,14 +12288,16 @@ a {
   font-size: 14px;
   letter-spacing: 1.5px; }
   .mdl-button i {
-    font-style: normal; }
+    font-style: normal;
+    font-family: monospace; }
 
 .back {
   color: #6E6E6E;
   text-decoration: none;
   text-transform: uppercase; }
   .back i {
-    font-style: normal; }
+    font-style: normal;
+    font-family: monospace; }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
