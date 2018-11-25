@@ -6,23 +6,31 @@
     <section class="transport">
         <div class="wrapper">
             <div class="white-bg">
-                <h4>Wybierz rodzaj przejazdu</h4>
+                <h4>Choose the type of transit</h4>
                 {% for vehicle in vehicles %}
                     <div class="box">
                         <a href="{{ path('route_new', {'vehicle': vehicle.id}) }}">
                             {% if loop.index == 1 %}<span class="icomoon-outline-directions_bus-24px"></span>{% endif %}
                             {% if loop.index == 2 %}<span class="icomoon-outline-local_shipping-24px"></span>{% endif %}
                             <h5>{{ vehicle.name }}</h5>
-                            <p>Jeśli chcesz zaplanować transport standardowej cysterny.</p>
+                            {% if loop.index == 1 %}
+                                <p>Plan new route for a bus or coach.</p>
+                            {% endif %}
+                            {% if loop.index == 2 %}
+                                <p>Plan new route for tankers and large trucks.</p>
+                            {% endif %}
+                            {% if loop.index == 3 %}
+                                <p>Plan new route for a custom vehicle (i.e. service machine).</p>
+                            {% endif %}
                         </a>
                     </div>
                 {% else %}
                     no records found
                 {% endfor %}
-                <div class="box">
+                <div class="box disabled" >
                     <a href="{{ path('vehicle_new') }}">
                         <span class="icomoon-outline-control_camera-24px"></span>
-                        <h5>Dodaj <br>nowy</h5>
+                        <h5>Add <br>new</h5>
                         <p>Jeśli chcesz zaplanować transport standardowej cysterny.</p>
                     </a>
                 </div>

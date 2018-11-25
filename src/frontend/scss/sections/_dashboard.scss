@@ -19,6 +19,9 @@
     &:hover {
       border: 1px solid $light;
     }
+    &.disabled {
+      pointer-events: none;
+    }
     a {
       color: $gray;
       text-decoration: none;
