@@ -44,6 +44,11 @@ class Route
      */
     private $isBlocking;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $blockTime;
+
     public function __construct()
     {
         $this->sections = new ArrayCollection();
@@ -124,6 +129,25 @@ class Route
     public function setIsBlocking(bool $isBlocking): self
     {
         $this->isBlocking = $isBlocking;
+
+        return $this;
+    }
+
+    public function getBlockTime(): ?int
+    {
+        return $this->blockTime;
+    }
+
+    public function setBlockTime(?int $blockTime): self
+    {
+        $this->blockTime = $blockTime;
+
+        return $this;
+    }
+
+    public function setSections(Collection $routeSections): self
+    {
+        $this->sections = $routeSections;
 
         return $this;
     }

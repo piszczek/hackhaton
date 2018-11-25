@@ -2,29 +2,26 @@
 
 namespace App\Form;
 
-use App\Entity\Route;
+use App\Entity\Point;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RouteType extends AbstractType
+class PointType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('startAt')
-            ->add('endAt')
-            ->add('isBlocking')
-            ->add('blockTime')
-            ->add('startFrom', PointType::class, ['mapped' => false])
-            ->add('startTo', PointType::class, ['mapped' => false])
+//            ->add('name')
+            ->add('longitude')
+            ->add('latitude')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Route::class,
+            'data_class' => Point::class,
         ]);
     }
 }

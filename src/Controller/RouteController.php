@@ -7,6 +7,8 @@ use App\Entity\Vehicle;
 use App\Form\RouteType;
 use App\Repository\RouteRepository;
 use App\Repository\SectionRepository;
+use App\Service\RouteResolver;
+use App\Service\SectionResolver;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,6 +19,21 @@ use Symfony\Component\Routing\Annotation\Route as RouteAnnotation;
  */
 class RouteController extends AbstractController
 {
+    /**
+     * @var SectionResolver
+     */
+    private $sectionResolver;
+    /**
+     * @var RouteResolver
+     */
+    private $routeResolver;
+
+    public function __construct(SectionResolver $sectionResolver, RouteResolver $routeResolver)
+    {
+        $this->sectionResolver = $sectionResolver;
+        $this->routeResolver = $routeResolver;
+    }
+
     /**
      * @RouteAnnotation("/", name="route_index", methods="GET")
      */
@@ -38,6 +55,14 @@ class RouteController extends AbstractController
         $sections = json_encode($sectionRepository->findAll());
 
         if ($form->isSubmitted() && $form->isValid()) {
+            [$startPoint, $endPoint] = $this->findPoints($form->getData());
+
+            $sections = $this->sectionResolver->resolve($route);
+
+            $routeSections = $this->routeResolver->resolve($startPoint, $endPoint, $sections);
+
+            $route->setSections($routeSections);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($route);
             $em->flush();
@@ -92,5 +117,13 @@ class RouteController extends AbstractController
         }
 
         return $this->redirectToRoute('route_index');
+    }
+
+    private function findPoints($data)
+    {
+        $startPoint = null;
+        $endPoint = null;
+
+        return [$startPoint, $endPoint];
     }
 }
