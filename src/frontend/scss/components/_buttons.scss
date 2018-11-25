@@ -10,6 +10,15 @@
   }
 }
 
+.back {
+  color: $gray;
+  text-decoration: none;
+  text-transform: uppercase;
+  i {
+    font-style: normal;
+  }
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,

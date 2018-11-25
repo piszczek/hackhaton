@@ -12,6 +12,7 @@
 
 {% if is_granted('ROLE_USER') %}
 {% include 'section/header.html.twig' %}
+{% include 'section/_steps.html.twig' %}
 {% endif %}
 <div id="sidebar">
     {% block sidebar %}
