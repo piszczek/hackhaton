@@ -12,28 +12,30 @@ class VehicleFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $busVehicle = new Vehicle();
-        $busVehicle->setName('Autobus');
+        foreach (['Transport osobowy', 'Transport gabarytowy'] as $name) {
 
-        $heightProperty = new Property();
-        $heightProperty->setType(RestrictionType::TYPE_HEIGHT);
-        $heightProperty->setValue("250");
+            $busVehicle = new Vehicle();
+            $busVehicle->setName($name);
 
-        $widthProperty = new Property();
-        $widthProperty->setType(RestrictionType::TYPE_WIDTH);
-        $widthProperty->setValue("250");
+            $heightProperty = new Property();
+            $heightProperty->setType(RestrictionType::TYPE_HEIGHT);
+            $heightProperty->setValue("250");
 
-        $weightProperty = new Property();
-        $weightProperty->setType(RestrictionType::TYPE_WEIGHT);
-        $weightProperty->setValue("250");
+            $widthProperty = new Property();
+            $widthProperty->setType(RestrictionType::TYPE_WIDTH);
+            $widthProperty->setValue("250");
 
-        $busVehicle
-            ->addProperty($widthProperty)
-            ->addProperty($heightProperty)
-            ->addProperty($weightProperty)
-        ;
+            $weightProperty = new Property();
+            $weightProperty->setType(RestrictionType::TYPE_WEIGHT);
+            $weightProperty->setValue("250");
 
-        $manager->persist($busVehicle);
+            $busVehicle
+                ->addProperty($widthProperty)
+                ->addProperty($heightProperty)
+                ->addProperty($weightProperty);
+
+            $manager->persist($busVehicle);
+        }
         $manager->flush();
     }
 }
