@@ -90,35 +90,9 @@ class Point
 
         return $this;
     }
-//
-//    /**
-//     * @return Collection|Section[]
-//     */
-//    public function getSections(): Collection
-//    {
-//        return $this->sections;
-//    }
-//
-//    public function addSection(Section $section): self
-//    {
-//        if (!$this->sections->contains($section)) {
-//            $this->sections[] = $section;
-//            $section->setStartPoint($this);
-//        }
-//
-//        return $this;
-//    }
-//
-//    public function removeSection(Section $section): self
-//    {
-//        if ($this->sections->contains($section)) {
-//            $this->sections->removeElement($section);
-//            // set the owning side to null (unless already changed)
-//            if ($section->getStartPoint() === $this) {
-//                $section->setStartPoint(null);
-//            }
-//        }
-//
-//        return $this;
-//    }
+
+    public function __toString()
+    {
+        return (string) $this->getId();
+    }
 }
