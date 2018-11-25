@@ -12214,15 +12214,32 @@ a {
 #section .row {
   margin: 5px 0; }
 
-.transport, .section {
+.section .white-bg {
+  padding: 30px 30px 60px 30px; }
+
+.section .col-map {
+  width: 100%;
+  height: 400px;
+  background: #F5F7F9; }
+
+.section #route > div {
+  margin: 10px 0; }
+  .section #route > div > label {
+    font-size: 12px;
+    font-weight: 600;
+    display: block; }
+  .section #route > div select {
+    margin: 5px; }
+
+.transport {
   text-align: center;
   padding: 100px 30px; }
-  .transport h4, .section h4 {
+  .transport h4 {
     text-align: center;
     margin-bottom: 60px; }
-  .transport .white-bg, .section .white-bg {
+  .transport .white-bg {
     padding: 30px 30px 60px 30px; }
-  .transport .box, .section .box {
+  .transport .box {
     display: inline-block;
     vertical-align: top;
     text-align: center;
@@ -12233,24 +12250,24 @@ a {
     border-radius: 4px;
     width: 260px;
     height: 260px; }
-    .transport .box a, .section .box a {
+    .transport .box a {
       color: #333333;
       text-decoration: none !important;
       display: block; }
-    .transport .box span, .section .box span {
+    .transport .box span {
       font-size: 50px; }
-      .transport .box span:before, .section .box span:before {
+      .transport .box span:before {
         color: #E10226; }
-    .transport .box h5, .section .box h5 {
+    .transport .box h5 {
       margin: 16px 0 44px 0;
       padding: 0 10px; }
-    .transport .box p, .section .box p {
+    .transport .box p {
       font-size: 13px; }
-    .transport .box:hover, .section .box:hover {
+    .transport .box:hover {
       background: #E10226; }
-      .transport .box:hover a, .section .box:hover a {
+      .transport .box:hover a {
         color: white; }
-        .transport .box:hover a span:before, .section .box:hover a span:before {
+        .transport .box:hover a span:before {
           color: white; }
 
 .steps {
@@ -12285,5 +12302,10 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px transparent inset; }
+
+select {
+  padding: 10px;
+  border-radius: 3px;
+  margin-right: 4px; }
 
 /*# sourceMappingURL=styles.css.map */
