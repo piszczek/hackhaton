@@ -6,6 +6,7 @@ use App\Entity\Route;
 use App\Entity\Vehicle;
 use App\Form\RouteType;
 use App\Repository\RouteRepository;
+use App\Repository\SectionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,13 +28,14 @@ class RouteController extends AbstractController
     /**
      * @RouteAnnotation("/new/{vehicle}", name="route_new", methods="GET|POST")
      */
-    public function new(Request $request, Vehicle $vehicle): Response
+    public function new(Request $request, SectionRepository $sectionRepository, Vehicle $vehicle): Response
     {
         $route = new Route();
         $route->setVehicle($vehicle);
 
         $form = $this->createForm(RouteType::class, $route);
         $form->handleRequest($request);
+        $sections = json_encode($sectionRepository->findAll());
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -46,6 +48,7 @@ class RouteController extends AbstractController
         return $this->render('route/new.html.twig', [
             'route' => $route,
             'form' => $form->createView(),
+            'sections' => $sections
         ]);
     }
 
