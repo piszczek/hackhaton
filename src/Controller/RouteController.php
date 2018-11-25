@@ -8,15 +8,15 @@ use App\Repository\RouteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Annotation\Route as RouteAnnotation;
 
 /**
- * @Route("/route")
+ * @RouteAnnotation("/route")
  */
 class RouteController extends AbstractController
 {
     /**
-     * @Route("/", name="route_index", methods="GET")
+     * @RouteAnnotation("/", name="route_index", methods="GET")
      */
     public function index(RouteRepository $routeRepository): Response
     {
@@ -24,7 +24,7 @@ class RouteController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="route_new", methods="GET|POST")
+     * @RouteAnnotation("/new", name="route_new", methods="GET|POST")
      */
     public function new(Request $request): Response
     {
@@ -47,7 +47,7 @@ class RouteController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="route_show", methods="GET")
+     * @RouteAnnotation("/{id}", name="route_show", methods="GET")
      */
     public function show(Route $route): Response
     {
@@ -55,7 +55,7 @@ class RouteController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="route_edit", methods="GET|POST")
+     * @RouteAnnotation("/{id}/edit", name="route_edit", methods="GET|POST")
      */
     public function edit(Request $request, Route $route): Response
     {
@@ -75,7 +75,7 @@ class RouteController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="route_delete", methods="DELETE")
+     * @RouteAnnotation("/{id}", name="route_delete", methods="DELETE")
      */
     public function delete(Request $request, Route $route): Response
     {
