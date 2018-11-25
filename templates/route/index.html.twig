@@ -3,90 +3,176 @@
 {% block title %}Route index{% endblock %}
 
 {% block body %}
-    <h1>Route index</h1>
+    {% include 'section/_steps.html.twig' %}
+    <section class="dashboard">
+        <div class="wrapper">
+            <div class="dashboard__content">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--6-col">
+                        {% for route in routes %}
+                            <div class="box show-route" data-id="{{ route.id }}">
+                                    <div class="box__left"><span class="icomoon-outline-directions_bus-24px"></span></div>
+                                    <div class="box__center">
+                                        <div class="name">{{ route.vehicle.name }}</div>
+                                        <div class="time show-route">
+                                            <span class="icomoon-Icon---Event---Filled"></span>
+                                            {{ route.startAt ? route.startAt|date('Y-m-d H:i:s') : '' }} - {{ route.endAt ? route.endAt|date('Y-m-d H:i:s') : '' }}
+                                        </div>
+                                        <div class="blocked">
+                                            Blocked: <strong>{{ route.isBlocking ? 'Yes' : 'No' }}</strong>
+                                        </div>
+                                    </div>
+                                    <div class="box__right"></div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col">
+                        <div id="map-section-container" class="map-section__container">
+                            <div id="map" class="map"></div>
+                            <div id="polyline-modal" class="polyline-modal">
+                                <div class="loader">
+                                    <div class="lds-ellipsis">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script src="/static/js/Router.js"></script>
+                        <script>
+                            const routes = JSON.parse('{{ routes_encoded|raw }}');
+                            let activePolylines = [];
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>StartAt</th>
-                <th>EndAt</th>
-                <th>IsBlocking</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for route in routes %}
-            <tr>
-                <td>{{ route.id }}</td>
-                <td>{{ route.startAt ? route.startAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ route.endAt ? route.endAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ route.isBlocking ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="#" class="show-route" data-id="{{ route.id }}">show</a>
-                    <a href="{{ path('route_edit', {'id': route.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <div id="map-section-container" class="map-section__container">
-        <div id="map" class="map"></div>
-        <div id="polyline-modal" class="polyline-modal">
-            <div class="loader">
-                <div class="lds-ellipsis">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                            async function initMap() {
+                                const refinery = {lat: 52.588353, lng: 19.672254};
+                                const map = new google.maps.Map(
+                                    document.getElementById('map'), {zoom: 13.98, center: refinery, mapTypeId: google.maps.MapTypeId.HYBRID}
+                                );
+
+                                document.addEventListener('click', event => {
+                                    console.log(event.target);
+                                    if (event.target.matches('.show-route')) {
+                                        event.preventDefault();
+                                        const routeId = event.target.getAttribute('data-id');
+                                        console.log(routeId);
+                                        for (let activePolyline of activePolylines) {
+                                            activePolyline.setMap(null);
+                                        }
+                                        activePolylines = [];
+                                        for (let route of routes) {
+                                            if (parseInt(routeId) !== route.id) {
+                                                continue;
+                                            }
+                                            for (let section of route.sections) {
+                                                let polyline = new google.maps.Polyline({
+                                                    path: [section.startPoint, section.endPoint],
+                                                    geodesic: true,
+                                                    strokeColor: '#FF0000',
+                                                    strokeOpacity: 1.0,
+                                                    strokeWeight: 4,
+                                                });
+                                                polyline.setMap(map);
+                                                activePolylines.push(polyline);
+                                            }
+                                        }
+                                    }
+                                });
+                            }
+                        </script>
+                        <script async defer
+                                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-a3f8Q6ZosKYXXjaIUoO_ad_yPq-iVjI&callback=initMap">
+                        </script>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <script src="/static/js/Router.js"></script>
-    <script>
-        const routes = JSON.parse('{{ routes_encoded|raw }}');
-        let activePolylines = [];
+    </section>
 
-        async function initMap() {
-            const refinery = {lat: 52.588353, lng: 19.672254};
-            const map = new google.maps.Map(
-                document.getElementById('map'), {zoom: 13.98, center: refinery, mapTypeId: google.maps.MapTypeId.HYBRID}
-            );
 
-            document.addEventListener('click', event => {
-                if (event.target.matches('.show-route')) {
-                    event.preventDefault();
-                    const routeId = event.target.getAttribute('data-id');
-                    for (let activePolyline of activePolylines) {
-                        activePolyline.setMap(null);
-                    }
-                    activePolylines = [];
-                    for (let route of routes) {
-                        if (parseInt(routeId) !== route.id) {
-                            continue;
-                        }
-                        for (let section of route.sections) {
-                            let polyline = new google.maps.Polyline({
-                                path: [section.startPoint, section.endPoint],
-                                geodesic: true,
-                                strokeColor: '#FF0000',
-                                strokeOpacity: 1.0,
-                                strokeWeight: 4,
-                            });
-                            polyline.setMap(map);
-                            activePolylines.push(polyline);
-                        }
-                    }
-                }
-            });
-        }
-    </script>
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-a3f8Q6ZosKYXXjaIUoO_ad_yPq-iVjI&callback=initMap">
-    </script>
+    {#<table class="table">#}
+        {#<thead>#}
+            {#<tr>#}
+                {#<th>Id</th>#}
+                {#<th>StartAt</th>#}
+                {#<th>EndAt</th>#}
+                {#<th>IsBlocking</th>#}
+                {#<th>actions</th>#}
+            {#</tr>#}
+        {#</thead>#}
+        {#<tbody>#}
+        {#{% for route in routes %}#}
+            {#<tr>#}
+                {#<td>{{ route.id }}</td>#}
+                {#<td>{{ route.startAt ? route.startAt|date('Y-m-d H:i:s') : '' }}</td>#}
+                {#<td>{{ route.endAt ? route.endAt|date('Y-m-d H:i:s') : '' }}</td>#}
+                {#<td>{{ route.isBlocking ? 'Yes' : 'No' }}</td>#}
+                {#<td>#}
+                    {#<a href="#" class="show-route" data-id="{{ route.id }}">show</a>#}
+                    {#<a href="{{ path('route_edit', {'id': route.id}) }}">edit</a>#}
+                {#</td>#}
+            {#</tr>#}
+        {#{% else %}#}
+            {#<tr>#}
+                {#<td colspan="5">no records found</td>#}
+            {#</tr>#}
+        {#{% endfor %}#}
+        {#</tbody>#}
+    {#</table>#}
+    {#<div id="map-section-container" class="map-section__container">#}
+        {#<div id="map" class="map"></div>#}
+        {#<div id="polyline-modal" class="polyline-modal">#}
+            {#<div class="loader">#}
+                {#<div class="lds-ellipsis">#}
+                    {#<div></div>#}
+                    {#<div></div>#}
+                    {#<div></div>#}
+                    {#<div></div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+    {#<script src="/static/js/Router.js"></script>#}
+    {#<script>#}
+        {#const routes = JSON.parse('{{ routes_encoded|raw }}');#}
+        {#let activePolylines = [];#}
+
+        {#async function initMap() {#}
+            {#const refinery = {lat: 52.588353, lng: 19.672254};#}
+            {#const map = new google.maps.Map(#}
+                {#document.getElementById('map'), {zoom: 13.98, center: refinery, mapTypeId: google.maps.MapTypeId.HYBRID}#}
+            {#);#}
+
+            {#document.addEventListener('click', event => {#}
+                {#if (event.target.matches('.show-route')) {#}
+                    {#event.preventDefault();#}
+                    {#const routeId = event.target.getAttribute('data-id');#}
+                    {#for (let activePolyline of activePolylines) {#}
+                        {#activePolyline.setMap(null);#}
+                    {#}#}
+                    {#activePolylines = [];#}
+                    {#for (let route of routes) {#}
+                        {#if (parseInt(routeId) !== route.id) {#}
+                            {#continue;#}
+                        {#}#}
+                        {#for (let section of route.sections) {#}
+                            {#let polyline = new google.maps.Polyline({#}
+                                {#path: [section.startPoint, section.endPoint],#}
+                                {#geodesic: true,#}
+                                {#strokeColor: '#FF0000',#}
+                                {#strokeOpacity: 1.0,#}
+                                {#strokeWeight: 4,#}
+                            {#});#}
+                            {#polyline.setMap(map);#}
+                            {#activePolylines.push(polyline);#}
+                        {#}#}
+                    {#}#}
+                {#}#}
+            {#});#}
+        {#}#}
+    {#</script>#}
+    {#<script async defer#}
+            {#src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-a3f8Q6ZosKYXXjaIUoO_ad_yPq-iVjI&callback=initMap">#}
+    {#</script>#}
 {% endblock %}
