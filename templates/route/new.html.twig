@@ -8,13 +8,14 @@
         <div class="wrapper">
             <div class="white-bg">
                 <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--6-col">
-                        <h5>Szczegóły przejazdu:</h5>
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <h5>Transit details:</h5>
                         <div class="parameters">
                             {{ include('route/_form.html.twig') }}
                         </div>
                     </div>
-                    <div class="mdl-cell mdl-cell--6-col">
+                    <div class="mdl-cell mdl-cell--8-col">
+                        <h5>Choose 2 points:</h5>
                         <div id="map-section-container" class="map-section__container">
                             <div id="map" class="map"></div>
                         </div>
