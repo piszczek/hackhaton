@@ -22,11 +22,8 @@
   }
 }
 
-.parameters {
 
-}
-
-.transport {
+.transport, .intro {
   text-align: center;
   padding: 100px 30px;
   h4 {
@@ -80,7 +77,7 @@
 
 .steps {
   overflow: hidden;
-  padding: 40px 0;
+  margin-bottom: 50px;
   &__return{
     float: left;
     font-size: 14px;

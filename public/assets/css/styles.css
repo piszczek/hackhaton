@@ -12099,7 +12099,8 @@ a {
   overflow: hidden;
   padding: 10px 0;
   border-bottom: 1px solid #F5F7F9;
-  background: white; }
+  background: white;
+  margin-bottom: 60px; }
   .header .logo {
     float: left;
     display: -webkit-box;
@@ -12133,7 +12134,9 @@ a {
     width: 330px;
     margin: 100px auto; }
     .login .wrapper h6 {
-      text-align: center; }
+      text-align: center;
+      margin-bottom: 60px;
+      font-weight: 600; }
   .login__logo {
     text-align: center; }
     .login__logo img {
@@ -12231,15 +12234,15 @@ a {
   .section #route > div select, .section #route > div input[type="date"], .section #route > div input[type="time"] {
     margin: 5px 5px 5px 0; }
 
-.transport {
+.transport, .intro {
   text-align: center;
   padding: 100px 30px; }
-  .transport h4 {
+  .transport h4, .intro h4 {
     text-align: center;
     margin-bottom: 60px; }
-  .transport .white-bg {
+  .transport .white-bg, .intro .white-bg {
     padding: 30px 30px 60px 30px; }
-  .transport .box {
+  .transport .box, .intro .box {
     display: inline-block;
     vertical-align: top;
     text-align: center;
@@ -12250,29 +12253,29 @@ a {
     border-radius: 4px;
     width: 260px;
     height: 260px; }
-    .transport .box a {
+    .transport .box a, .intro .box a {
       color: #333333;
       text-decoration: none !important;
       display: block; }
-    .transport .box span {
+    .transport .box span, .intro .box span {
       font-size: 50px; }
-      .transport .box span:before {
+      .transport .box span:before, .intro .box span:before {
         color: #E10226; }
-    .transport .box h5 {
+    .transport .box h5, .intro .box h5 {
       margin: 16px 0 44px 0;
       padding: 0 10px; }
-    .transport .box p {
+    .transport .box p, .intro .box p {
       font-size: 13px; }
-    .transport .box:hover {
+    .transport .box:hover, .intro .box:hover {
       background: #E10226; }
-      .transport .box:hover a {
+      .transport .box:hover a, .intro .box:hover a {
         color: white; }
-        .transport .box:hover a span:before {
+        .transport .box:hover a span:before, .intro .box:hover a span:before {
           color: white; }
 
 .steps {
   overflow: hidden;
-  padding: 40px 0; }
+  margin-bottom: 50px; }
   .steps__return {
     float: left;
     font-size: 14px; }
@@ -12299,11 +12302,11 @@ a {
     font-style: normal;
     font-family: monospace; }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px transparent inset; }
+.login__form input:-webkit-autofill,
+.login__form input:-webkit-autofill:hover,
+.login__form input:-webkit-autofill:focus,
+.login__form input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #F5F7F9 inset; }
 
 select, input[type="date"], input[type="time"] {
   padding: 10px;
