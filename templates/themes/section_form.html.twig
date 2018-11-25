@@ -32,6 +32,28 @@
 
 {% block restriction_widget %}
     <div class="row">
-        {{ form_widget(form) }}
+        {% if form.vars.value.type == 3 %}
+            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="{{ form.vars.id }}_switch">
+                <input type="checkbox" id="{{ form.vars.id }}_switch" class="mdl-checkbox__input" checked>
+                <span class="mdl-checkbox__label">Włączona/Wyłączonaox</span>
+            </label>
+            <script>
+                document.querySelector('#{{ form.vars.id }}_switch').addEventListener(
+                    'change',
+                    function (event) {
+                        if (event.target.checked) {
+                            document.querySelector('#{{ form.valueTo.vars.id }}').value = '1';
+                        } else {
+                            document.querySelector('#{{ form.valueTo.vars.id }}').value = '0';
+                        }
+                    }
+                );
+            </script>
+            <div style="display: none">
+                {{ form_widget(form) }}
+            </div>
+        {% else %}
+            {{ form_widget(form) }}
+        {% endif %}
     </div>
 {% endblock %}
