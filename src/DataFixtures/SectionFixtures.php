@@ -27,6 +27,10 @@ class SectionFixtures extends Fixture
 
                 $collector[(string)$sect['startPoint'][0]] = $startPoint;
                 $points[] = $sect['startPoint'][0];
+
+                if (!$this->hasReference('startPoint')) {
+                    $this->setReference('startPoint', $startPoint);
+                }
             }
             else {
                 $startPoint = $collector[(string)$sect['startPoint'][0]];
@@ -39,6 +43,8 @@ class SectionFixtures extends Fixture
 
                 $collector[(string)$sect['endPoint'][0]] = $endPoint;
                 $points[] = $sect['endPoint'][0];
+
+                $this->setReference('endPoint', $endPoint);
             }
             else {
                 $endPoint = $collector[(string)$sect['endPoint'][0]];
