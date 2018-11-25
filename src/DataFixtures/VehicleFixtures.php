@@ -30,7 +30,7 @@ class VehicleFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        foreach (['Transport osobowy', 'Transport gabarytowy'] as $name) {
+        foreach (['Passenger transport', 'Carriage of fuel'] as $name) {
 
             $busVehicle = new Vehicle();
             $busVehicle->setName($name);
