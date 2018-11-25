@@ -27,11 +27,11 @@
                 {% else %}
                     no records found
                 {% endfor %}
-                <div class="box disabled" >
+                <div class="box disabled" style="pointer-events: none">
                     <a href="{{ path('vehicle_new') }}">
                         <span class="icomoon-outline-control_camera-24px"></span>
                         <h5>Add <br>new</h5>
-                        <p>Jeśli chcesz zaplanować transport standardowej cysterny.</p>
+                        <p>Plan new route for a custom vehicle (i.e. service machine)</p>
                     </a>
                 </div>
             </div>
