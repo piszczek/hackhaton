@@ -47,4 +47,5 @@ class PointRepository extends ServiceEntityRepository
         ;
     }
     */
+
 }
