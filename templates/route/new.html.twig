@@ -16,10 +16,6 @@
             </div>
             <script src="/static/js/Router.js"></script>
             <script>
-                const findNearestPoint = async function (event) {
-                    console.log(event.latLng.lat())
-                };
-
                 async function initMap() {
                     let index = 'startPoint';
                     let minDistance = 4000;
@@ -40,13 +36,13 @@
                                 latLngHolder = routeLatLng;
                             }
                         }
-                        minLatLngHolder[index] = latLngHolder;
+                        minLatLngHolder[index] = {id: route[index].id};
+                        document.querySelector('#route_'+index+'Id').value = minLatLngHolder[index].id;
                         index = 'endPoint';
                         let marker = new google.maps.Marker({
                             position: latLngHolder,
                             title: index
                         });
-
                         marker.setMap(map);
                         if (null !== minLatLngHolder.startPoint && null !== minLatLngHolder.endPoint) {
                             google.maps.event.clearListeners(map, 'click');
