@@ -26,9 +26,13 @@ input:-webkit-autofill:active  {
   -webkit-box-shadow: 0 0 0 30px transparent inset;
 }
 
-select {
+select, input[type="date"], input[type="time"] {
   padding: 10px;
   border-radius: 3px;
   margin-right: 4px;
+  border: 1px solid $light;
+}
 
+* {
+  outline: none !important;
 }
