@@ -12214,15 +12214,15 @@ a {
 #section .row {
   margin: 5px 0; }
 
-.transport {
+.transport, .section {
   text-align: center;
   padding: 100px 30px; }
-  .transport h4 {
+  .transport h4, .section h4 {
     text-align: center;
     margin-bottom: 60px; }
-  .transport .white-bg {
+  .transport .white-bg, .section .white-bg {
     padding: 30px 30px 60px 30px; }
-  .transport .box {
+  .transport .box, .section .box {
     display: inline-block;
     vertical-align: top;
     text-align: center;
@@ -12233,24 +12233,24 @@ a {
     border-radius: 4px;
     width: 260px;
     height: 260px; }
-    .transport .box a {
+    .transport .box a, .section .box a {
       color: #333333;
       text-decoration: none !important;
       display: block; }
-    .transport .box span {
+    .transport .box span, .section .box span {
       font-size: 50px; }
-      .transport .box span:before {
+      .transport .box span:before, .section .box span:before {
         color: #E10226; }
-    .transport .box h5 {
+    .transport .box h5, .section .box h5 {
       margin: 16px 0 44px 0;
       padding: 0 10px; }
-    .transport .box p {
+    .transport .box p, .section .box p {
       font-size: 13px; }
-    .transport .box:hover {
+    .transport .box:hover, .section .box:hover {
       background: #E10226; }
-      .transport .box:hover a {
+      .transport .box:hover a, .section .box:hover a {
         color: white; }
-        .transport .box:hover a span:before {
+        .transport .box:hover a span:before, .section .box:hover a span:before {
           color: white; }
 
 .steps {

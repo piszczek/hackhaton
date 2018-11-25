@@ -51,18 +51,19 @@ class SectionFixtures extends Fixture
             $section->setEndPoint($endPoint);
             $section->setDistance($this->calcDistance($sect['startPoint'][0], $sect['startPoint'][1], $sect['endPoint'][0], $sect['endPoint'][1]));
 
-            $heightRestrction = new Restriction(RestrictionType::TYPE_HEIGHT);
-            $heightRestrction->setValueTo("999");
+            $heightRestriction = new Restriction(RestrictionType::TYPE_HEIGHT);
+            $heightRestriction->setValueTo("999");
+
             $widthRestriction = new Restriction(RestrictionType::TYPE_WIDTH);
             $widthRestriction->setValueTo("999");
+
             $weightRestriction = new Restriction(RestrictionType::TYPE_WEIGHT);
             $weightRestriction->setValueTo("999");
-            $weightRestriction = new Restriction(RestrictionType::TYPE_WEIGHT);
-            $weightRestriction->setValueTo("999");
-            $activeRestriction = new Restriction(RestrictionType::TYPE_WEIGHT);
+
+            $activeRestriction = new Restriction(RestrictionType::TYPE_ACTIVE);
             $activeRestriction->setValueTo("1");
 
-            $section->addRestriction($heightRestrction);
+            $section->addRestriction($heightRestriction);
             $section->addRestriction($widthRestriction);
             $section->addRestriction($weightRestriction);
             $section->addRestriction($activeRestriction);

@@ -21,7 +21,27 @@
 
 <div id="content">
     {% block body %}
-        <h1>Hello</h1>
+        <section class="intro section">
+            <div class="wrapper">
+                <div class="white-bg">
+                    <h5>Witamy </h5>
+                    <div class="box">
+                        <a href="{{ path('section_index') }}">
+                            <span class="icomoon-orlen_logo"></span>
+                            <h5>Edycja trasy</h5>
+                            <p>Jeśli chcesz zaplanować transport standardowej cysterny.</p>
+                        </a>
+                    </div>
+                    <div class="box">
+                        <a href="{{ path('vehicle_index') }}">
+                            <span class="icomoon-orlen_logo"></span>
+                            <h5>Zaplanuj przejazd</h5>
+                            <p>Jeśli chcesz zaplanować transport standardowej cysterny.</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
     {% endblock %}
 </div>
 
