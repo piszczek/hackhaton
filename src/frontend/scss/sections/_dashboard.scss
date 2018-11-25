@@ -15,9 +15,9 @@
     box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.1);
     margin-bottom: 15px;
     border-radius: 5px;
-    border: 1px solid transparent;
+    border: 1px solid $light;
     &:hover {
-      border: 1px solid $light;
+      border: 1px solid $red;
     }
     &.disabled {
       pointer-events: none;

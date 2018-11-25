@@ -12165,9 +12165,9 @@ a {
           box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.1);
   margin-bottom: 15px;
   border-radius: 5px;
-  border: 1px solid transparent; }
+  border: 1px solid #F5F7F9; }
   .dashboard .box:hover {
-    border: 1px solid #F5F7F9; }
+    border: 1px solid #E10226; }
   .dashboard .box.disabled {
     pointer-events: none; }
   .dashboard .box a {
