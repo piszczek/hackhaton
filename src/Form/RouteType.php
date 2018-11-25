@@ -6,6 +6,7 @@ use App\Entity\Point;
 use App\Entity\Route;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,18 +25,24 @@ class RouteType extends AbstractType
                 'date_widget' => 'single_text',
                 'time_widget' => 'single_text',
             ])
-            ->add('isBlocking')
+            ->add('isBlocking', CheckboxType::class, [
+                'label' => false //label is defined in twig
+            ])
             ->add('blockTime')
             ->add('startPoint', EntityType::class,
                 [
                     'class' => Point::class,
-                    'mapped' => false
+                    'mapped' => false,
+                    'attr' => ['style' => 'display:none'],
+                    'label' => false,
                 ]
             )
             ->add('endPoint', EntityType::class,
                 [
                     'class' => Point::class,
-                    'mapped' => false
+                    'mapped' => false,
+                    'attr' => ['style' => 'display:none'],
+                    'label' => false,
                 ]
             )
         ;
