@@ -24,9 +24,9 @@ class RouteResolver
      * @param Route $route
      * @return Collection
      */
-    public function resolve(Point $startPoint, Point $endPoint, $sections): array
+    public function resolve(Point $startPoint, Point $endPoint, Collection $sections): Collection
     {
-        $routeSections = [];
+        $routeSections = new ArrayCollection();
 
         $graph = [];
         foreach ($sections as $segment) {
@@ -52,7 +52,7 @@ class RouteResolver
             if(is_null($sectionObj)) {
                 $sectionObj = $this->sectionRepo->findOneBy(['startPoint' => $tuple[1], 'endPoint' => $tuple[0]]);
             }
-            array_push($routeSections, $sectionObj);
+            $routeSections->add( $sectionObj);
         }
 
         return $routeSections;

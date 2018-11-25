@@ -55,7 +55,8 @@ class RouteController extends AbstractController
         $sections = json_encode($sectionRepository->findAll());
 
         if ($form->isSubmitted() && $form->isValid()) {
-            [$startPoint, $endPoint] = $this->findPoints($form->getData());
+            $startPoint = $form->get('startPoint')->getData();
+            $endPoint = $form->get('endPoint')->getData();
 
             $sections = $this->sectionResolver->resolve($route);
 

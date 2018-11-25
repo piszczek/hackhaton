@@ -50,7 +50,7 @@ class SectionResolver
                 }
             }
 
-            $validSections->add($validSections);
+            $validSections->add($section);
         }
 
         return $validSections;

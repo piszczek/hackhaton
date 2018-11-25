@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d37f3fac6a8395c0aa1afe8a22dc034",
+    "content-hash": "34d63922ae3b2c833ed6d8bdfba42021",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1174,6 +1174,54 @@
                 "reflection"
             ],
             "time": "2018-06-14T14:45:07+00:00"
+        },
+        {
+            "name": "fisharebest/algorithm",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fisharebest/algorithm.git",
+                "reference": "ac26a02f7038ded2db1adf07f4a97946116a5a6f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fisharebest/algorithm/zipball/ac26a02f7038ded2db1adf07f4a97946116a5a6f",
+                "reference": "ac26a02f7038ded2db1adf07f4a97946116a5a6f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "*",
+                "phpunit/phpunit": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Fisharebest\\Algorithm\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Roach",
+                    "email": "greg@subaqua.co.uk",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Implementation of standard algorithms in PHP.",
+            "homepage": "https://github.com/fisharebest/algorithm",
+            "keywords": [
+                "Algorithm",
+                "diff",
+                "dijkstra",
+                "myers"
+            ],
+            "time": "2018-09-07T15:03:40+00:00"
         },
         {
             "name": "jdorn/sql-formatter",

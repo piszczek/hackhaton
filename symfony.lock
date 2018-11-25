@@ -77,6 +77,9 @@
     "doctrine/reflection": {
         "version": "v1.0.0"
     },
+    "fisharebest/algorithm": {
+        "version": "1.5.0"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
