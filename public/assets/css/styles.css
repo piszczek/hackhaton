@@ -10546,7 +10546,7 @@ fieldset[disabled] .mdl-switch .mdl-switch__ripple-container .mdl-ripple,
 
 .mdl-textfield__input {
   border: none;
-  border-bottom: 1px solid #E10226;
+  border-bottom: 1px solid #6E6E6E;
   display: block;
   font-size: 16px;
   font-family: "Helvetica", "Arial", sans-serif;
@@ -11957,6 +11957,10 @@ a {
   background: white;
   border-radius: 5px; }
 
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
 @font-face {
   font-family: 'icomoon';
   src: url("./../fonts/icomoon.eot?krykt5");
@@ -12164,6 +12168,8 @@ a {
     overflow: hidden; }
     .map-section__container.active .map {
       width: 70%; }
+    .map-section__container.active .polyline-modal {
+      border: 1px solid #F5F7F9; }
     .map-section__container .map {
       float: left;
       width: 100%;
@@ -12177,7 +12183,9 @@ a {
       -webkit-transition: 0.2s ease;
       transition: 0.2s ease;
       position: relative;
-      height: 700px; }
+      height: 700px;
+      -webkit-box-shadow: 3px 2px 10px 10px rgba(0, 0, 0, 0.3);
+              box-shadow: 3px 2px 10px 10px rgba(0, 0, 0, 0.3); }
       .map-section__container .polyline-modal.show {
         width: 30%; }
       .map-section__container .polyline-modal .loader {
@@ -12186,8 +12194,27 @@ a {
         top: 50%;
         -webkit-transform: translate(-50%, -50%);
                 transform: translate(-50%, -50%); }
+      .map-section__container .polyline-modal .top {
+        background: #F5F7F9; }
+      .map-section__container .polyline-modal .content form {
+        margin-bottom: 20px; }
+        .map-section__container .polyline-modal .content form .mdl-button {
+          margin: 10px 0; }
       .map-section__container .polyline-modal .inner {
         padding: 20px; }
+
+#section input[type="text"] {
+  padding: 10px;
+  width: 70px;
+  text-align: center;
+  border: 1px solid #F5F7F9;
+  border-radius: 3px; }
+
+#section #section_restrictions label {
+  padding-right: 10px; }
+
+#section .row {
+  margin: 5px 0; }
 
 .mdl-button {
   background: #E10226 !important;
