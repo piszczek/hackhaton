@@ -11950,8 +11950,6 @@ h6 {
 a {
   color: #E10226;
   text-decoration: none; }
-  a:hover {
-    opacity: 0.8; }
 
 .white-bg {
   background: white;
@@ -12216,6 +12214,55 @@ a {
 #section .row {
   margin: 5px 0; }
 
+.transport {
+  text-align: center;
+  padding: 100px 30px; }
+  .transport h4 {
+    text-align: center;
+    margin-bottom: 60px; }
+  .transport .white-bg {
+    padding: 30px 30px 60px 30px; }
+  .transport .box {
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    margin: 10px;
+    -webkit-box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.1);
+    padding: 30px 20px 20px;
+    border-radius: 4px;
+    width: 260px;
+    height: 260px; }
+    .transport .box a {
+      color: #333333;
+      text-decoration: none !important;
+      display: block; }
+    .transport .box span {
+      font-size: 50px; }
+      .transport .box span:before {
+        color: #E10226; }
+    .transport .box h5 {
+      margin: 16px 0 44px 0;
+      padding: 0 10px; }
+    .transport .box p {
+      font-size: 13px; }
+    .transport .box:hover {
+      background: #E10226; }
+      .transport .box:hover a {
+        color: white; }
+        .transport .box:hover a span:before {
+          color: white; }
+
+.steps {
+  overflow: hidden;
+  padding: 40px 0; }
+  .steps__return {
+    float: left;
+    font-size: 14px; }
+  .steps__number {
+    float: right;
+    font-size: 30px; }
+
 .mdl-button {
   background: #E10226 !important;
   color: white !important;
@@ -12224,6 +12271,13 @@ a {
   font-size: 14px;
   letter-spacing: 1.5px; }
   .mdl-button i {
+    font-style: normal; }
+
+.back {
+  color: #6E6E6E;
+  text-decoration: none;
+  text-transform: uppercase; }
+  .back i {
     font-style: normal; }
 
 input:-webkit-autofill,

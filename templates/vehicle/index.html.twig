@@ -3,35 +3,53 @@
 {% block title %}Vehicle index{% endblock %}
 
 {% block body %}
-    <h1>Vehicle index</h1>
+    <section class="transport">
+        <div class="wrapper">
+            <div class="white-bg">
+                <h4>Wybierz rodzaj przejazdu</h4>
+                {% for vehicle in vehicles %}
+                    <div class="box">
+                        <a href="{{ path('route_new', {'vehicle': vehicle.id}) }}">
+                            {% if loop.index == 1 %}<span class="icomoon-outline-directions_bus-24px"></span>{% endif %}
+                            {% if loop.index == 2 %}<span class="icomoon-outline-local_shipping-24px"></span>{% endif %}
+                            <h5>{{ vehicle.name }}</h5>
+                            <p>Jeśli chcesz zaplanować transport standardowej cysterny.</p>
+                        </a>
+                    </div>
+                {% else %}
+                    no records found
+                {% endfor %}
+                <div class="box">
+                    <a href="{{ path('vehicle_new') }}">
+                        <span class="icomoon-outline-control_camera-24px"></span>
+                        <h5>Dodaj <br>nowy</h5>
+                        <p>Jeśli chcesz zaplanować transport standardowej cysterny.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for vehicle in vehicles %}
-            <tr>
-                <td>{{ vehicle.id }}</td>
-                <td>{{ vehicle.name }}</td>
-                <td>{{ vehicle.type }}</td>
-                <td>
-                    <a href="{{ path('route_new', {'vehicle': vehicle.id}) }}">Add new route</a>
-                    <a href="{{ path('vehicle_edit', {'id': vehicle.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    {#<table class="table">#}
 
-    <a href="{{ path('vehicle_new') }}">Create new</a>
+        {#<tbody>#}
+        {#{% for vehicle in vehicles %}#}
+            {#<tr>#}
+                {#<td>{{ vehicle.id }}</td>#}
+                {#<td>{{ vehicle.name }}</td>#}
+                {#<td>{{ vehicle.type }}</td>#}
+                {#<td>#}
+                    {#<a href="{{ path('route_new', {'vehicle': vehicle.id}) }}">Add new route</a>#}
+                    {#<a href="{{ path('vehicle_edit', {'id': vehicle.id}) }}">edit</a>#}
+                {#</td>#}
+            {#</tr>#}
+        {#{% else %}#}
+            {#<tr>#}
+                {#<td colspan="4">no records found</td>#}
+            {#</tr>#}
+        {#{% endfor %}#}
+        {#</tbody>#}
+    {#</table>#}
+
+    {#<a href="{{ path('vehicle_new') }}">Create new</a>#}
 {% endblock %}
