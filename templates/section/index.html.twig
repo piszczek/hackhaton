@@ -36,6 +36,10 @@
                             },
                         }).then(response => {
                             modal.innerHTML = response;
+                            var arr = modal.getElementsByTagName('script');
+                            for (var n = 0; n < arr.length; n++)
+                                eval(arr[n].innerHTML)//run script inside div
+
                             const sectionForm = document.querySelector('form');
                             sectionForm.addEventListener('submit', event => {
                                 event.preventDefault();
