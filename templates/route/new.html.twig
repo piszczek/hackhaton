@@ -3,9 +3,24 @@
 {% block title %}New Route{% endblock %}
 
 {% block body %}
-    <h1>Create new Route</h1>
-
-    {{ include('route/_form.html.twig') }}
+    <section class="section">
+        <div class="wrapper">
+            <div class="white-bg">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--6-col">
+                        <h5>Szczegóły przejazdu:</h5>
+                        <div class="parameters">
+                            {{ include('route/_form.html.twig') }}
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col">
+                        <div class="col-map">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 <section class="map-section">
     <div class="wrapper">
