@@ -39,7 +39,13 @@ class RouteController extends AbstractController
      */
     public function index(RouteRepository $routeRepository): Response
     {
-        return $this->render('route/index.html.twig', ['routes' => $routeRepository->findAll()]);
+        $encoded = json_encode($routeRepository->findAll());
+
+        return $this->render('route/index.html.twig', [
+                'routes' => $routeRepository->findAll(),
+                'routes_encoded' => $encoded
+            ]
+        );
     }
 
     /**
