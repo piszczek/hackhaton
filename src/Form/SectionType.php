@@ -13,12 +13,16 @@ class SectionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
+            ->add('name', null, ['label' => 'Nazwa'])
 //            ->add('startPoint')
 //            ->add('endPoint')
             ->add('restrictions', CollectionType::class,
                 [
-                    'entry_type' => RestrictionType::class
+                    'entry_type' => RestrictionType::class,
+                    'entry_options' => [
+                      'label'  => false
+                    ],
+                    'label' => false
                 ])
         ;
     }
