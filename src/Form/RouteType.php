@@ -17,10 +17,12 @@ class RouteType extends AbstractType
     {
         $builder
             ->add('startAt', DateTimeType::class,[
-                'date_widget' => 'single_text'
+                'date_widget' => 'single_text',
+                'time_widget' => 'single_text',
             ])
             ->add('endAt', DateTimeType::class,[
-                'date_widget' => 'single_text'
+                'date_widget' => 'single_text',
+                'time_widget' => 'single_text',
             ])
             ->add('isBlocking')
             ->add('blockTime')

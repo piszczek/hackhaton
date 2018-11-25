@@ -1,4 +1,32 @@
-.transport, .section  {
+.section  {
+  .white-bg {
+    padding: 30px 30px 60px 30px;
+  }
+  .col-map {
+    width: 100%;
+    height: 400px;
+    background: $light;
+  }
+  #route {
+    > div {
+      margin: 10px 0;
+      > label {
+        font-size: 12px;
+        font-weight: 600;
+        display: block;
+      }
+      select {
+        margin: 5px;
+      }
+    }
+  }
+}
+
+.parameters {
+
+}
+
+.transport {
   text-align: center;
   padding: 100px 30px;
   h4 {
