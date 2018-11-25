@@ -28,7 +28,7 @@ class RouteType extends AbstractType
             ->add('isBlocking', CheckboxType::class, [
                 'label' => false //label is defined in twig
             ])
-            ->add('blockTime')
+//            ->add('blockTime')
             ->add('startPoint', EntityType::class,
                 [
                     'class' => Point::class,
