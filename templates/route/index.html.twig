@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Route index{% endblock %}
+
+{% block body %}
+    <h1>Route index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>StartAt</th>
+                <th>EndAt</th>
+                <th>IsBlocking</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for route in routes %}
+            <tr>
+                <td>{{ route.id }}</td>
+                <td>{{ route.startAt ? route.startAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ route.endAt ? route.endAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ route.isBlocking ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('route_show', {'id': route.id}) }}">show</a>
+                    <a href="{{ path('route_edit', {'id': route.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('route_new') }}">Create new</a>
+{% endblock %}
