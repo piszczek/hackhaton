@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Route;
+use App\Entity\Vehicle;
 use App\Form\RouteType;
 use App\Repository\RouteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,11 +25,13 @@ class RouteController extends AbstractController
     }
 
     /**
-     * @RouteAnnotation("/new", name="route_new", methods="GET|POST")
+     * @RouteAnnotation("/new/{vehicle}", name="route_new", methods="GET|POST")
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Vehicle $vehicle): Response
     {
         $route = new Route();
+        $route->setVehicle($vehicle);
+
         $form = $this->createForm(RouteType::class, $route);
         $form->handleRequest($request);
 

@@ -21,7 +21,7 @@
                 <td>{{ vehicle.name }}</td>
                 <td>{{ vehicle.type }}</td>
                 <td>
-                    <a href="{{ path('vehicle_show', {'id': vehicle.id}) }}">show</a>
+                    <a href="{{ path('route_new', {'vehicle': vehicle.id}) }}">Add new route</a>
                     <a href="{{ path('vehicle_edit', {'id': vehicle.id}) }}">edit</a>
                 </td>
             </tr>
