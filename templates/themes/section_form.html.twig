@@ -1,3 +1,37 @@
 {% block text_widget %}
     {{ form_widget(form) }}
 {% endblock %}
+
+{#{% block restriction_row %}#}
+        {#{%- set widget_attr = {} -%}#}
+        {#{%- if help is not empty -%}#}
+            {#{%- set widget_attr = {attr: {'aria-describedby': id ~"_help"}} -%}#}
+        {#{%- endif -%}#}
+        {#<div>#}
+            {#{{- form_label(form) -}}#}
+            {#{{- form_errors(form) -}}#}
+            {#{{- form_widget(form, widget_attr) -}}#}
+            {#{{- form_help(form) -}}#}
+        {#</div>#}
+{#{% endblock %}#}
+
+{% block _section_restrictions_entry_valueTo_label %}
+    {% if form.parent.vars.value.type == 0 %}
+        Max Waga
+    {% endif %}
+    {% if form.parent.vars.value.type == 1 %}
+        Max Szerokość
+    {% endif %}
+    {% if form.parent.vars.value.type == 2 %}
+        Max Wysokość
+    {% endif %}
+    {% if form.parent.vars.value.type == 3 %}
+        Aktywna/Nieaktywna
+    {% endif %}
+{% endblock %}
+
+{% block restriction_widget %}
+    <div class="row">
+        {{ form_widget(form) }}
+    </div>
+{% endblock %}

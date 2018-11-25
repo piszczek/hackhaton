@@ -16,7 +16,10 @@ class RestrictionType extends AbstractType
 //            ->add('startAt')
 //            ->add('endAt')
 //            ->add('valueFrom')
-            ->add('valueTo')
+            ->add('valueTo', null, [
+                'attr' => ['class' => 'textfield__input'],
+                'label_attr' => ['class' => 'textfield__label']]
+            )
 //            ->add('section')
         ;
     }

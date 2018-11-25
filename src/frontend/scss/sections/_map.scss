@@ -26,6 +26,8 @@
       transition: 0.2s ease;
       position: relative;
       height: 700px;
+      border: 1px solid $light;
+      box-shadow: 3px 2px 10px 10px rgba(0,0,0,0.3);
       &.show {
         width: 30%;
       }
@@ -35,10 +37,40 @@
         top: 50%;
         transform: translate(-50%, -50%);
       }
-      .inner {
-        padding: 20px;
+      .top {
+        background: $light;
+      }
+      .content {
+        form {
+          margin-bottom: 20px;
+          .mdl-button {
+            margin: 10px 0;
+          }
+        }
 
       }
+      .inner {
+        padding: 20px;
+      }
     }
+  }
+}
+
+
+#section {
+  input[type="text"] {
+    padding: 10px;
+    width: 70px;
+    text-align: center;
+    border: 1px solid $light;
+    border-radius: 3px;
+  }
+  #section_restrictions {
+    label {
+      padding-right: 10px;
+    }
+  }
+  .row {
+    margin: 5px 0;
   }
 }
