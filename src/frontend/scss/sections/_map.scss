@@ -49,6 +49,15 @@
           .mdl-button {
             margin: 10px 0;
           }
+          #section {
+            > div {
+              > label {
+                //min-width: 107px;
+                //display: inline-block;
+                //vertical-align: top;
+              }
+            }
+          }
         }
 
       }
