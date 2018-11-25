@@ -35,7 +35,7 @@
         {% if form.vars.value.type == 3 %}
             <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="{{ form.vars.id }}_switch">
                 <input type="checkbox" id="{{ form.vars.id }}_switch" class="mdl-checkbox__input" {{ form.valueTo.vars.value == '1' ? 'checked':''}}>
-                <span class="mdl-checkbox__label">Włączona/Wyłączonaox</span>
+                <span class="mdl-checkbox__label">Is active?</span>
             </label>
             <script>
                 document.querySelector('#{{ form.vars.id }}_switch').addEventListener(

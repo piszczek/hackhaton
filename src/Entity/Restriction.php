@@ -157,7 +157,7 @@ class Restriction implements \JsonSerializable
             case RestrictionType::TYPE_HEIGHT:
                 return 'Wysokość';
             case RestrictionType::TYPE_ACTIVE:
-                return 'Włączona/Wyłączona';
+                return 'Active/Inactive';
 
         }
 
