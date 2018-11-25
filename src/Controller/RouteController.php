@@ -10,6 +10,7 @@ use App\Repository\SectionRepository;
 use App\Service\RouteResolver;
 use App\Service\SectionResolver;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route as RouteAnnotation;
@@ -63,6 +64,16 @@ class RouteController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $startPoint = $form->get('startPoint')->getData();
             $endPoint = $form->get('endPoint')->getData();
+
+            if ($startPoint === $endPoint) {
+                $form->addError(new FormError('Start and endpoint must be selected'));
+                return $this->render('route/new.html.twig', [
+                    'route' => $route,
+                    'form' => $form->createView(),
+                    'sections' => $sections
+                ]);
+
+            }
 
             $sections = $this->sectionResolver->resolve($route);
 
