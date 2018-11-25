@@ -15,8 +15,8 @@ class RouteType extends AbstractType
             ->add('startAt')
             ->add('endAt')
             ->add('isBlocking')
-            ->add('vehicle')
-            ->add('sections')
+//            ->add('vehicle')
+//            ->add('sections')
         ;
     }
 
