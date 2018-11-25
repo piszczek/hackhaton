@@ -12,7 +12,6 @@
 
 {% if is_granted('ROLE_USER') %}
 {% include 'section/header.html.twig' %}
-{% include 'section/_steps.html.twig' %}
 {% endif %}
 <div id="sidebar">
     {% block sidebar %}
@@ -24,7 +23,6 @@
         <section class="intro section">
             <div class="wrapper">
                 <div class="white-bg">
-                    <h5>Witamy </h5>
                     <div class="box">
                         <a href="{{ path('section_index') }}">
                             <span class="icomoon-orlen_logo"></span>

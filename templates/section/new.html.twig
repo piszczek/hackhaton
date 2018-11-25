@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}New Section{% endblock %}
-
+{% include 'section/_steps.html.twig' %}
 {% block body %}
     <h4>Create new Section</h4>
     {{ include('section/_form.html.twig') }}
