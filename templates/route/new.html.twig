@@ -21,7 +21,6 @@
                         <script>
                             async function initMap() {
                                 let index = 'startPoint';
-                                let minDistance = 4000;
                                 let minLatLngHolder = {startPoint: null, endPoint: null};
                                 const routes = JSON.parse('{{ sections|raw }}');
                                 const refinery = {lat: 52.588353, lng: 19.672254};
@@ -30,17 +29,20 @@
                                 );
 
                                 google.maps.event.addListener(map, 'click', (event) => {
+                                    let minDistance = 4000;
                                     let latLngHolder = null;
+                                    let idHolder = 0;
                                     for (route of routes) {
                                         let routeLatLng = new google.maps.LatLng(route[index].lat, route[index].lng);
                                         let distance = google.maps.geometry.spherical.computeDistanceBetween(event.latLng, routeLatLng);
                                         if (distance < minDistance) {
                                             minDistance = distance;
                                             latLngHolder = routeLatLng;
+                                            idHolder = route[index].id;
                                         }
                                     }
-                                    minLatLngHolder[index] = {id: route[index].id};
-                                    document.querySelector('#route_'+index).value = minLatLngHolder[index].id;
+                                    minLatLngHolder[index] = idHolder;
+                                    document.querySelector('#route_'+index+'Id').value = minLatLngHolder[index];
                                     index = 'endPoint';
                                     let marker = new google.maps.Marker({
                                         position: latLngHolder,
