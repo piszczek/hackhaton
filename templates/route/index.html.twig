@@ -14,7 +14,7 @@
                                     <div class="box__left"><span class="icomoon-outline-directions_bus-24px"></span></div>
                                     <div class="box__center">
                                         <div class="name">{{ route.vehicle.name }}</div>
-                                        <div class="time show-route">
+                                        <div class="time">
                                             <span class="icomoon-Icon---Event---Filled"></span>
                                             {{ route.startAt ? route.startAt|date('Y-m-d H:i:s') : '' }} - {{ route.endAt ? route.endAt|date('Y-m-d H:i:s') : '' }}
                                         </div>
@@ -50,13 +50,10 @@
                                 const map = new google.maps.Map(
                                     document.getElementById('map'), {zoom: 13.98, center: refinery, mapTypeId: google.maps.MapTypeId.HYBRID}
                                 );
-
-                                document.addEventListener('click', event => {
-                                    console.log(event.target);
-                                    if (event.target.matches('.show-route')) {
-                                        event.preventDefault();
-                                        const routeId = event.target.getAttribute('data-id');
-                                        console.log(routeId);
+                                const routesBoxes = document.querySelectorAll('.show-route');
+                                for (let routesBox of routesBoxes) {
+                                    routesBox.addEventListener('click', () => {
+                                        let routeId = routesBox.getAttribute('data-id');
                                         for (let activePolyline of activePolylines) {
                                             activePolyline.setMap(null);
                                         }
@@ -77,8 +74,8 @@
                                                 activePolylines.push(polyline);
                                             }
                                         }
-                                    }
-                                });
+                                    })
+                                }
                             }
                         </script>
                         <script async defer
