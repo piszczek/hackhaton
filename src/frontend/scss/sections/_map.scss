@@ -12,6 +12,9 @@
       .map {
         width: 70%;
       }
+      .polyline-modal {
+        border: 1px solid $light;
+      }
     }
     .map {
       float: left;
@@ -26,7 +29,6 @@
       transition: 0.2s ease;
       position: relative;
       height: 700px;
-      border: 1px solid $light;
       box-shadow: 3px 2px 10px 10px rgba(0,0,0,0.3);
       &.show {
         width: 30%;
